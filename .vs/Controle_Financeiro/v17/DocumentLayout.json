@@ -1,0 +1,344 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\models\\categoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\repositories\\itransacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\repositories\\itransacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\services\\usuarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\repositories\\transacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\repositories\\transacaorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\models\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\models\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\migrations\\20250722194106_senha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\migrations\\20250722194106_senha.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\controllers\\transacoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\controllers\\transacoescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\dtos\\usuariorespostadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle_Financeiro.csproj|solutionrelative:controle-financeiro\\dtos\\usuariorespostadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\services\\transacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\services\\transacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|c:\\users\\mosten\\desktop\\cursos\\csharp-net\\controle-financeiro\\controle-financeiro\\dtos\\transacaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{58C071D1-B060-4959-AF50-B966F440B3DF}|Controle-Financeiro\\Controle-Financeiro.csproj|solutionrelative:controle-financeiro\\dtos\\transacaodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\PrimeiraAPI\\PrimeiraAPI\\Domain\\Models\\FuncionarioAggregate\\IFuncionarioRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Transacao.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Transacao.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Models\\Transacao.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Transacao.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Models\\Transacao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T15:32:30.492Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TransacaoDTO.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\TransacaoDTO.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\DTOs\\TransacaoDTO.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\TransacaoDTO.cs",
+              "RelativeToolTip": "Controle-Financeiro\\DTOs\\TransacaoDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T17:08:36.823Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\IUsuarioRepository.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Repositories\\IUsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\IUsuarioRepository.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Repositories\\IUsuarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:45:50.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UsuarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\UsuarioDTO.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\DTOs\\UsuarioDTO.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\UsuarioDTO.cs",
+              "RelativeToolTip": "Controle-Financeiro\\DTOs\\UsuarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:55:40.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Program.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Program.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Program.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:18:51.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TransacaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\TransacaoRepository.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Repositories\\TransacaoRepository.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\TransacaoRepository.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Repositories\\TransacaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T17:43:50.285Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Usuario.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:41:33.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T19:26:28.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Categoria.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Categoria.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Models\\Categoria.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Models\\Categoria.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Models\\Categoria.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:41:21.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ITransacaoRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\ITransacaoRepository.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Repositories\\ITransacaoRepository.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\ITransacaoRepository.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Repositories\\ITransacaoRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T17:37:00.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioService.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Services\\UsuarioService.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Services\\UsuarioService.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Services\\UsuarioService.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Services\\UsuarioService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T19:12:36.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Repositories\\UsuarioRepository.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Repositories\\UsuarioRepository.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Repositories\\UsuarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:46:50.327Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20250722194106_Senha.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Migrations\\20250722194106_Senha.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Migrations\\20250722194106_Senha.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Migrations\\20250722194106_Senha.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Migrations\\20250722194106_Senha.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T19:41:07.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UsuarioRespostaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\UsuarioRespostaDTO.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\DTOs\\UsuarioRespostaDTO.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\DTOs\\UsuarioRespostaDTO.cs",
+              "RelativeToolTip": "Controle-Financeiro\\DTOs\\UsuarioRespostaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:59:17.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TransacoesController.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\TransacoesController.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Controllers\\TransacoesController.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\TransacoesController.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Controllers\\TransacoesController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:12:06.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T19:26:54.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T17:29:33.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TransacaoService.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Services\\TransacaoService.cs",
+              "RelativeDocumentMoniker": "Controle-Financeiro\\Services\\TransacaoService.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\Controle-Financeiro\\Controle-Financeiro\\Services\\TransacaoService.cs",
+              "RelativeToolTip": "Controle-Financeiro\\Services\\TransacaoService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T18:03:37.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IFuncionarioRepository.cs",
+              "DocumentMoniker": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\PrimeiraAPI\\PrimeiraAPI\\Domain\\Models\\FuncionarioAggregate\\IFuncionarioRepository.cs",
+              "RelativeDocumentMoniker": "..\\PrimeiraAPI\\PrimeiraAPI\\Domain\\Models\\FuncionarioAggregate\\IFuncionarioRepository.cs",
+              "ToolTip": "C:\\Users\\MOSTEN\\Desktop\\Cursos\\CSharp-NET\\PrimeiraAPI\\PrimeiraAPI\\Domain\\Models\\FuncionarioAggregate\\IFuncionarioRepository.cs",
+              "RelativeToolTip": "..\\PrimeiraAPI\\PrimeiraAPI\\Domain\\Models\\FuncionarioAggregate\\IFuncionarioRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-22T17:37:56.244Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

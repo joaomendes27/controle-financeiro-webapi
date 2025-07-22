@@ -1,0 +1,40 @@
+﻿using Controle_Financeiro.DTOs;
+using Controle_Financeiro.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Controle_Financeiro.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class TransacoesController : Controller
+    {
+
+        private readonly TransacaoService _service;
+
+        public TransacoesController(TransacaoService service)
+        {
+            _service = service;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromForm] TransacaoDTO dto)
+        {
+            await _service.AdicionarAsync(dto);
+            return Ok();
+        }
+
+        [HttpPut("{Id}")]
+        public async Task<IActionResult> Put(int id, [FromForm] TransacaoDTO dto)
+        {
+            await _service.AtualizarAsync(id, dto);
+            return Ok();
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.RemoverAsync(id);
+            return Ok();
+        }
+    }
+}
