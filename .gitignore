@@ -1,0 +1,12 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+
+# .NET build
+Controle-Financeiro/bin/
+Controle-Financeiro/obj/
+
+# Logs
+*.log
