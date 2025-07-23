@@ -35,7 +35,7 @@ namespace Controle_Financeiro.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{Id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             await _service.RemoverAsync(id);
@@ -49,6 +49,15 @@ namespace Controle_Financeiro.Controllers
             var usuarioId = int.Parse(User.FindFirst("id").Value);
             var resultado = await _service.ListarDoUsuarioAsync(usuarioId, tipo);
             return Ok(resultado);
+        }
+
+        [Authorize]
+        [HttpGet("relatorio")]
+        public async Task<ActionResult<RelatorioMensalDTO>> GetRelatorioMensal(int mes, int ano)
+        {
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var relatorio = await _service.FiltrarMesAnoAsync(usuarioId, mes, ano);
+            return Ok(relatorio);
         }
     }
 }

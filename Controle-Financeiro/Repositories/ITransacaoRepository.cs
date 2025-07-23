@@ -10,6 +10,6 @@ namespace Controle_Financeiro.Repositories
         Task AtualizarAsync(Transacao transacao);
         Task RemoverAsync(int id);
         Task<List<Transacao>> ListarDoUsuarioAsync(int usuarioId, TipoCategoria? tipo);
-
+        Task<List<Transacao>> FiltrarMesAnoAsync(int usuarioId, int mes, int ano);
     }
 }

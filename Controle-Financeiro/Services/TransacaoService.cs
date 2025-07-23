@@ -27,13 +27,13 @@ namespace Controle_Financeiro.Services
             var usuarioId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("id").Value);
             var valor = dtO.Valor;
 
-            if (dtO.CategoriaID == 1 && dtO.Valor > 0)
+            if (dtO.CategoriaID == 1)
             {
-                valor *= -1;
+                valor = Math.Abs(dtO.Valor); 
             }
-             if (dtO.CategoriaID == 2 && dtO.Valor < 0)
+            else if (dtO.CategoriaID == 2) 
             {
-                valor *= -1;
+                valor = -Math.Abs(dtO.Valor);
             }
 
             var transacao = new Transacao
@@ -70,6 +70,7 @@ namespace Controle_Financeiro.Services
 
             return transacoes.Select(t => new TransacaoRespostaDTO
             {
+                Id = t.Id,
                 Valor = t.Valor,
                 Descricao = t.Descricao,
                 Data = t.DataTransacao,
@@ -77,5 +78,23 @@ namespace Controle_Financeiro.Services
             }).ToList();
         }
 
+        public async Task<RelatorioMensalDTO> FiltrarMesAnoAsync(int usuarioId, int mes, int ano)
+        {
+            var transacoes = await _repository.FiltrarMesAnoAsync(usuarioId, mes, ano);
+
+            var totalReceitas = transacoes
+           .Where(t => t.Categoria.Tipo == TipoCategoria.Receita)
+           .Sum(t => t.Valor);
+
+            var totalDespesas = transacoes
+            .Where(t => t.Categoria.Tipo == TipoCategoria.Despesa)
+            .Sum(t => t.Valor);
+
+            return new RelatorioMensalDTO
+            {
+                TotalReceitas = totalReceitas,
+                TotalDespesas = totalDespesas
+            };
+        }
     }
 }

@@ -45,6 +45,12 @@ namespace Controle_Financeiro.Repositories
 
             return await query.ToListAsync();
         }
+
+        public async Task<List<Transacao>> FiltrarMesAnoAsync(int usuarioId, int mes, int ano)
+        {
+            return await _context.Transacoes.Include(t => t.Categoria).Where(t => t.UsuarioId == usuarioId && t.DataTransacao.Month == mes && t.DataTransacao.Year == ano)
+                .ToListAsync();
+        }
     }
 
 }
