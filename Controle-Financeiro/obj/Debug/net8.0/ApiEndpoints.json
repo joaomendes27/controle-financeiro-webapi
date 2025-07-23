@@ -119,6 +119,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Controle_Financeiro.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/Usuario/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EmailOuUsuario",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Senha",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Controle_Financeiro.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

@@ -5,7 +5,6 @@
         public int Id { get; set; }
         public double Valor { get; set; }
         public DateTime DataTransacao { get; set; } = DateTime.Now;
-
         public int CategoriaId { get; set; }
         public Categoria Categoria { get; set; }
 

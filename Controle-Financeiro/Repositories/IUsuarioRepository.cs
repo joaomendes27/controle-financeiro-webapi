@@ -6,6 +6,8 @@ namespace Controle_Financeiro.Repositories
     {
         Task<Usuario?> BuscarPorEmailAsync(string email);
         Task<Usuario?> BuscarPorNomeAsync(string nome);
-        Task CadastrarAsync(Usuario usuario); 
+        Task CadastrarAsync(Usuario usuario);
+
+
     }
 }

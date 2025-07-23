@@ -169,3 +169,5 @@ C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeir
 C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeiro\obj\Debug\net8.0\Controle_Financeiro.genruntimeconfig.cache
 C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeiro\obj\Debug\net8.0\ref\Controle_Financeiro.dll
 C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeiro\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeiro\obj\Debug\net8.0\Controle_Financeiro.sourcelink.json
+C:\Users\MOSTEN\Desktop\Cursos\CSharp-NET\Controle-Financeiro\Controle-Financeiro\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

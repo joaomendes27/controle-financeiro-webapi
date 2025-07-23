@@ -1,5 +1,6 @@
 ﻿using Controle_Financeiro.DTOs;
 using Controle_Financeiro.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controle_Financeiro.Controllers
@@ -16,6 +17,7 @@ namespace Controle_Financeiro.Controllers
             _service = service;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] TransacaoDTO dto)
         {
@@ -23,6 +25,7 @@ namespace Controle_Financeiro.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpPut("{Id}")]
         public async Task<IActionResult> Put(int id, [FromForm] TransacaoDTO dto)
         {
@@ -30,6 +33,7 @@ namespace Controle_Financeiro.Controllers
             return Ok();
         }
 
+        [Authorize]
         [HttpDelete("{Id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Controle_Financeiro",
-    "version": "1.0"
+    "title": "ControleFinanceiro API",
+    "version": "v1"
   },
   "paths": {
     "/api/Transacoes": {
@@ -200,6 +200,43 @@
         }
       }
     },
+    "/api/Usuario/login": {
+      "post": {
+        "tags": [
+          "Usuario"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "EmailOuUsuario": {
+                    "type": "string"
+                  },
+                  "Senha": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "EmailOuUsuario": {
+                  "style": "form"
+                },
+                "Senha": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -265,6 +302,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Insira o token JWT no campo abaixo. Ex: Bearer {seu token}",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }
