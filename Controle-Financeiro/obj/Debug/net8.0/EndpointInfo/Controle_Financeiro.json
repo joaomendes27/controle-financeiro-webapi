@@ -16,13 +16,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "Id": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Valor": {
                     "type": "number",
                     "format": "double"
+                  },
+                  "Descricao": {
+                    "type": "string"
                   },
                   "DataTransacao": {
                     "type": "string",
@@ -31,27 +30,20 @@
                   "CategoriaID": {
                     "type": "integer",
                     "format": "int32"
-                  },
-                  "UsuarioID": {
-                    "type": "integer",
-                    "format": "int32"
                   }
                 }
               },
               "encoding": {
-                "Id": {
+                "Valor": {
                   "style": "form"
                 },
-                "Valor": {
+                "Descricao": {
                   "style": "form"
                 },
                 "DataTransacao": {
                   "style": "form"
                 },
                 "CategoriaID": {
-                  "style": "form"
-                },
-                "UsuarioID": {
                   "style": "form"
                 }
               }
@@ -87,13 +79,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "Id": {
-                    "type": "integer",
-                    "format": "int32"
-                  },
                   "Valor": {
                     "type": "number",
                     "format": "double"
+                  },
+                  "Descricao": {
+                    "type": "string"
                   },
                   "DataTransacao": {
                     "type": "string",
@@ -102,27 +93,20 @@
                   "CategoriaID": {
                     "type": "integer",
                     "format": "int32"
-                  },
-                  "UsuarioID": {
-                    "type": "integer",
-                    "format": "int32"
                   }
                 }
               },
               "encoding": {
-                "Id": {
+                "Valor": {
                   "style": "form"
                 },
-                "Valor": {
+                "Descricao": {
                   "style": "form"
                 },
                 "DataTransacao": {
                   "style": "form"
                 },
                 "CategoriaID": {
-                  "style": "form"
-                },
-                "UsuarioID": {
                   "style": "form"
                 }
               }
@@ -153,6 +137,53 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Transacoes/usuario": {
+      "get": {
+        "tags": [
+          "Transacoes"
+        ],
+        "parameters": [
+          {
+            "name": "tipo",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TipoCategoria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransacaoRespostaDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransacaoRespostaDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransacaoRespostaDTO"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -279,6 +310,36 @@
   },
   "components": {
     "schemas": {
+      "TipoCategoria": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "TransacaoRespostaDTO": {
+        "type": "object",
+        "properties": {
+          "valor": {
+            "type": "number",
+            "format": "double"
+          },
+          "descricao": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "categoria": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "WeatherForecast": {
         "type": "object",
         "properties": {

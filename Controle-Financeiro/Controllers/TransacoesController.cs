@@ -1,4 +1,5 @@
 ﻿using Controle_Financeiro.DTOs;
+using Controle_Financeiro.Models.Enums;
 using Controle_Financeiro.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -39,6 +40,15 @@ namespace Controle_Financeiro.Controllers
         {
             await _service.RemoverAsync(id);
             return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("usuario")]
+        public async Task<ActionResult<List<TransacaoRespostaDTO>>> GetDoUsuario([FromQuery] TipoCategoria? tipo)
+        {
+            var usuarioId = int.Parse(User.FindFirst("id").Value);
+            var resultado = await _service.ListarDoUsuarioAsync(usuarioId, tipo);
+            return Ok(resultado);
         }
     }
 }

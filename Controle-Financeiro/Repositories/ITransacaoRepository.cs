@@ -1,4 +1,5 @@
 ﻿using Controle_Financeiro.Models;
+using Controle_Financeiro.Models.Enums;
 
 namespace Controle_Financeiro.Repositories
 {
@@ -8,5 +9,7 @@ namespace Controle_Financeiro.Repositories
         Task AdicionarAsync(Transacao transacao);
         Task AtualizarAsync(Transacao transacao);
         Task RemoverAsync(int id);
+        Task<List<Transacao>> ListarDoUsuarioAsync(int usuarioId, TipoCategoria? tipo);
+
     }
 }

@@ -1,16 +1,21 @@
 ﻿using Controle_Financeiro.DTOs;
 using Controle_Financeiro.Models;
+using Controle_Financeiro.Models.Enums;
 using Controle_Financeiro.Repositories;
+using System.Drawing;
 
 namespace Controle_Financeiro.Services
 {
     public class TransacaoService
     {
         private readonly ITransacaoRepository _repository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public TransacaoService(ITransacaoRepository repository)
+
+        public TransacaoService(ITransacaoRepository repository, IHttpContextAccessor httpContextAccessor)
         {
             _repository = repository;
+            _httpContextAccessor = httpContextAccessor;
         }
         public async Task<Transacao?> BuscarPorIdAsync(int id)
         {
@@ -19,13 +24,27 @@ namespace Controle_Financeiro.Services
 
         public async Task AdicionarAsync(TransacaoDTO dtO)
         {
+            var usuarioId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirst("id").Value);
+            var valor = dtO.Valor;
+
+            if (dtO.CategoriaID == 1 && dtO.Valor > 0)
+            {
+                valor *= -1;
+            }
+             if (dtO.CategoriaID == 2 && dtO.Valor < 0)
+            {
+                valor *= -1;
+            }
+
             var transacao = new Transacao
             {
-                Valor = dtO.Valor,
+                Valor = valor,
+                Descricao = dtO.Descricao,
                 DataTransacao = dtO.DataTransacao,
                 CategoriaId = dtO.CategoriaID,
-                UsuarioId = dtO.UsuarioID,
+                UsuarioId = usuarioId
             };
+            await _repository.AdicionarAsync(transacao);
         }
 
         public async Task AtualizarAsync(int id, TransacaoDTO dto)
@@ -44,5 +63,19 @@ namespace Controle_Financeiro.Services
         {
             await _repository.RemoverAsync(id);
         }
+
+        public async Task<List<TransacaoRespostaDTO>> ListarDoUsuarioAsync(int usuarioId, TipoCategoria? tipo)
+        {
+            var transacoes = await _repository.ListarDoUsuarioAsync(usuarioId, tipo);
+
+            return transacoes.Select(t => new TransacaoRespostaDTO
+            {
+                Valor = t.Valor,
+                Descricao = t.Descricao,
+                Data = t.DataTransacao,
+                Categoria = t.Categoria.Nome
+            }).ToList();
+        }
+
     }
 }

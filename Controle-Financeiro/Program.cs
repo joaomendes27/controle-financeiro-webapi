@@ -52,6 +52,7 @@ builder.Services.AddScoped<UsuarioService>();
 
 builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
 builder.Services.AddScoped<TransacaoService>();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<TokenService>();
 

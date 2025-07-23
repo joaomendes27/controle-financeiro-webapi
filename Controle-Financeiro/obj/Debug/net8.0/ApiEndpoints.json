@@ -8,13 +8,13 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Id",
-        "Type": "System.Int32",
+        "Name": "Valor",
+        "Type": "System.Double",
         "IsRequired": false
       },
       {
-        "Name": "Valor",
-        "Type": "System.Double",
+        "Name": "Descricao",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -24,11 +24,6 @@
       },
       {
         "Name": "CategoriaID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UsuarioID",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -49,13 +44,13 @@
         "IsRequired": true
       },
       {
-        "Name": "Id",
-        "Type": "System.Int32",
+        "Name": "Valor",
+        "Type": "System.Double",
         "IsRequired": false
       },
       {
-        "Name": "Valor",
-        "Type": "System.Double",
+        "Name": "Descricao",
+        "Type": "System.String",
         "IsRequired": false
       },
       {
@@ -65,11 +60,6 @@
       },
       {
         "Name": "CategoriaID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "UsuarioID",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -91,6 +81,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Controle_Financeiro.Controllers.TransacoesController",
+    "Method": "GetDoUsuario",
+    "RelativePath": "api/Transacoes/usuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Controle_Financeiro.DTOs.TransacaoRespostaDTO, Controle_Financeiro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Controle_Financeiro.Controllers.UsuarioController",

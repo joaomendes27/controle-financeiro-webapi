@@ -15,6 +15,7 @@ namespace Controle_Financeiro.Services.Auth
             {
                 Subject = new ClaimsIdentity(new[]
                 {
+                    new Claim("id", usuario.Id.ToString()),
                     new Claim(ClaimTypes.Name, usuario.Nome),
                     new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
                 }),
