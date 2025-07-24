@@ -1,0 +1,21 @@
+<div class="login-container">
+  <img src="assets/img/logo-transparent.png" alt="Logo" class="logo" />
+
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <input
+      type="text"
+      name="emailOuUsuario"
+      [(ngModel)]="form.emailOuUsuario"
+      placeholder="Usuário ou Email"
+      required
+    />
+    <input
+      type="password"
+      name="senha"
+      [(ngModel)]="form.senha"
+      placeholder="Senha"
+      required
+    />
+    <button type="submit">Entrar</button>
+  </form>
+</div>
