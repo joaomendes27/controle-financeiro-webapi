@@ -1,0 +1,39 @@
+.dashboard-layout {
+  display: flex;
+
+  .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin: 20px 0;
+
+        a {
+          color: white;
+          text-decoration: none;
+          font-size: 1.2rem;
+
+          &:hover {
+            color: #28a745;
+          }
+
+          &.active {
+            font-weight: bold;
+            color: #28a745;
+          }
+        }
+      }
+    }
+  }
+
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+}

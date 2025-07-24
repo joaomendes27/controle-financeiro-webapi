@@ -1,19 +1,17 @@
 import { ApplicationConfig } from '@angular/core';
-import { provideHttpClient } from '@angular/common/http';
-import { provideRouter } from '@angular/router';
-import { AppRoutingModule } from './app-routing.module';
 import {
-  provideZoneChangeDetection,
   provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
 } from '@angular/core';
-
-import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter } from '@angular/router'; // Usando provideRouter
+import { routes } from './app.routes'; // Suas rotas
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes),
-    provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideHttpClient(),
+    provideRouter(routes), // Configura as rotas
   ],
 };

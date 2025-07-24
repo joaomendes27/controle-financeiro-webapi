@@ -1,0 +1,21 @@
+<div class="dashboard-layout">
+  <div class="sidebar">
+    <ul>
+      <li><a routerLink="/dashboard" routerLinkActive="active">Home</a></li>
+      <li>
+        <a routerLink="/dashboard/nova-transacao" routerLinkActive="active"
+          >Adicionar Transação</a
+        >
+      </li>
+      <li>
+        <a routerLink="/dashboard/listar-transacoes" routerLinkActive="active"
+          >Listar Transações</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="main-content">
+    <router-outlet></router-outlet>
+    <!-- Aqui o conteúdo das rotas será exibido -->
+  </div>
+</div>

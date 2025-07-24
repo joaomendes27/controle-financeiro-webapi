@@ -1,0 +1,22 @@
+<div class="dashboard-home">
+  <div class="header">
+    <h2>Dashboard</h2>
+    <button class="btn-download" (click)="baixarRelatorio()">
+      Baixar Relatório
+    </button>
+  </div>
+  <div class="content">
+    <div class="totais">
+      <p>
+        <strong>Total de Receitas: </strong>R$
+        {{ totalReceitas | number : "1.2-2" }}
+      </p>
+      <p>
+        <strong>Total de Despesas: </strong>R$
+        {{ totalDespesas | number : "1.2-2" }}
+      </p>
+      <p><strong>Saldo Final: </strong>R$ {{ saldo | number : "1.2-2" }}</p>
+    </div>
+    <!-- Outras informações do Dashboard -->
+  </div>
+</div>
