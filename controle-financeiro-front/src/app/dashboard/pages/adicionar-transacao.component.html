@@ -1,0 +1,46 @@
+<div class="buttons" *ngIf="selectedCategoria === null">
+  <button (click)="selectCategoria(1)" class="btn btn-success">Receita</button>
+  <button (click)="selectCategoria(2)" class="btn btn-danger">Despesa</button>
+</div>
+
+<!-- Formulário visível após a seleção -->
+<div *ngIf="selectedCategoria !== null" class="form-container">
+  <!-- Botão de Voltar -->
+  <button (click)="goBack()" class="btn btn-back mb-3">Voltar</button>
+
+  <h2>
+    {{ selectedCategoria === 1 ? "Adicionar Receita" : "Adicionar Despesa" }}
+  </h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="valor">Valor</label>
+      <input
+        type="number"
+        id="valor"
+        [(ngModel)]="transacao.valor"
+        name="valor"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input
+        type="text"
+        id="descricao"
+        [(ngModel)]="transacao.descricao"
+        name="descricao"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Adicionar Transação</button>
+    </div>
+  </form>
+</div>
+
+<p *ngIf="message" class="message">{{ message }}</p>

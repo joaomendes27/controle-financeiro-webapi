@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardLayout } from './dashboard/layout/dashboard-layout';
 import { DashboardHome } from './dashboard/pages/dashboard-home';
-import { AdicionarTransacao } from './dashboard/pages/adicionar-transacao';
+import { AdicionarTransacao } from './dashboard/pages/adicionar-transacao.component';
 import { ListarTransacoes } from './dashboard/pages/listar-transacoes';
 
 export const routes: Routes = [
