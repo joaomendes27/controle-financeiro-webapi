@@ -4,7 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardLayout } from './dashboard/layout/dashboard-layout';
 import { DashboardHome } from './dashboard/pages/dashboard-home';
 import { AdicionarTransacao } from './dashboard/pages/adicionar-transacao.component';
-import { ListarTransacoes } from './dashboard/pages/listar-transacoes';
+import { ListarTransacoes } from './dashboard/pages/listar-transacoes.component';
 
 export const routes: Routes = [
   // Redireciona para login inicialmente

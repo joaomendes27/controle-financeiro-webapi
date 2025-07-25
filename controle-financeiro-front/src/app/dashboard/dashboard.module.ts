@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms'; // Certifique-se que está aqui!
 import { DashboardLayout } from './layout/dashboard-layout';
 import { DashboardHome } from './pages/dashboard-home';
 import { AdicionarTransacao } from './pages/adicionar-transacao.component';
-import { ListarTransacoes } from './pages/listar-transacoes';
+import { ListarTransacoes } from './pages/listar-transacoes.component';
 
 @NgModule({
   imports: [

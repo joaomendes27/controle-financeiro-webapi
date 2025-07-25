@@ -1,23 +1,28 @@
 .dashboard-layout {
   display: flex;
+  justify-content: flex-start; /* Alinha o conteúdo ao longo do eixo horizontal */
+  align-items: center; /* Centraliza a sidebar verticalmente */
 
   .sidebar {
-    width: 250px;
+    width: 250px; /* Largura fixa */
     background-color: #333;
     color: white;
     padding: 20px;
+    height: 50vh; /* A altura é metade da tela (50% da altura da viewport) */
+    position: relative; /* Necessário para o posicionamento absoluto */
 
     ul {
       list-style: none;
       padding: 0;
 
       li {
-        margin: 20px 0;
+        margin: 15px 0;
 
         a {
           color: white;
           text-decoration: none;
-          font-size: 1.2rem;
+          font-size: 1.1rem;
+          display: block;
 
           &:hover {
             color: #28a745;

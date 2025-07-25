@@ -32,22 +32,36 @@ export class DashboardService {
     });
   }
 
-  // Método para adicionar uma nova transação (ALTERADO PARA USAR FormData)
+  // Método para adicionar uma nova transação
   adicionarTransacao(transacao: any): Observable<any> {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    // Criando o FormData
     const formData = new FormData();
-    formData.append('Valor', transacao.valor.toString()); // Convertendo para string, já que o FormData não aceita números diretamente
+    formData.append('Valor', transacao.valor.toString());
     formData.append('Descricao', transacao.descricao);
     formData.append('CategoriaID', transacao.categoriaID.toString());
     formData.append(
       'DataTransacao',
       new Date(transacao.dataTransacao).toISOString()
-    ); // Convertendo a data para o formato ISO
+    );
 
-    // Enviar os dados com o FormData
     return this.http.post(this.apiUrl, formData, { headers });
+  }
+
+  // Método para listar as receitas do usuário
+  listarReceitas(): Observable<any[]> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any[]>(`${this.apiUrl}/usuario?tipo=1`, { headers });
+  }
+
+  // Método para listar as despesas do usuário
+  listarDespesas(): Observable<any[]> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any[]>(`${this.apiUrl}/usuario?tipo=2`, { headers });
   }
 }

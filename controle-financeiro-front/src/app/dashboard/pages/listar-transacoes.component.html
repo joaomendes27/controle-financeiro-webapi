@@ -1,0 +1,53 @@
+<div class="transacoes-container">
+  <h2>Transações</h2>
+
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <div class="transacoes">
+    <!-- Receitas -->
+    <div class="receitas">
+      <h3>Receitas</h3>
+      <table *ngIf="receitas.length > 0">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let receita of receitas">
+            <td>{{ receita.descricao }}</td>
+            <td>{{ receita.valor | currency }}</td>
+            <td>{{ receita.dataTransacao }}</td>
+            <!-- A data já formatada -->
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="receitas.length === 0">Nenhuma receita encontrada.</p>
+    </div>
+
+    <!-- Despesas -->
+    <div class="despesas">
+      <h3>Despesas</h3>
+      <table *ngIf="despesas.length > 0">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let despesa of despesas">
+            <td>{{ despesa.descricao }}</td>
+            <td>{{ despesa.valor | currency }}</td>
+            <td>{{ despesa.dataTransacao }}</td>
+            <!-- A data já formatada -->
+          </tr>
+        </tbody>
+      </table>
+      <p *ngIf="despesas.length === 0">Nenhuma despesa encontrada.</p>
+    </div>
+  </div>
+</div>
