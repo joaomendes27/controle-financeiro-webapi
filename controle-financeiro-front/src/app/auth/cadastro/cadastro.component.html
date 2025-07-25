@@ -1,0 +1,28 @@
+<div class="cadastro-container">
+  <img src="assets/img/logo-transparent.png" alt="Logo" class="logo" />
+
+  <form (ngSubmit)="cadastrar()" #cadastroForm="ngForm">
+    <input
+      type="text"
+      name="nome"
+      [(ngModel)]="form.nome"
+      placeholder="Nome"
+      required
+    />
+    <input
+      type="email"
+      name="email"
+      [(ngModel)]="form.email"
+      placeholder="Email"
+      required
+    />
+    <input
+      type="password"
+      name="senha"
+      [(ngModel)]="form.senha"
+      placeholder="Senha"
+      required
+    />
+    <button type="submit">Cadastrar</button>
+  </form>
+</div>

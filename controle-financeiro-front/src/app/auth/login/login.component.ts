@@ -16,7 +16,7 @@ export class LoginComponent {
     senha: '',
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(public router: Router, private http: HttpClient) {}
 
   login() {
     const formData = new FormData();
@@ -38,8 +38,13 @@ export class LoginComponent {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
+          alert('Usuário ou Senha inváldos!');
           console.error('Erro ao logar', err);
         },
       });
+  }
+  navigateToCadastro() {
+    console.log('Botão "Cadastrar" foi clicado');
+    this.router.navigate(['/auth/cadastro']);
   }
 }

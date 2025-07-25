@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { DashboardService } from '../../services/dashboard.service';
+import { CommonModule } from '@angular/common'; // Verifique se você já tem esta importação
 
 @Component({
   selector: 'app-dashboard-home',
@@ -9,49 +9,47 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
 })
-export class DashboardHome {
+export class DashboardHome implements OnInit {
   totalReceitas: number = 0;
   totalDespesas: number = 0;
   saldo: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
     this.carregarRelatorioMensal();
   }
 
   carregarRelatorioMensal() {
-    // Aqui você pode chamar sua API para obter os valores de receita e despesa
-    this.http.get('https://localhost:7181/api/Relatorio/download').subscribe({
+    const dataAtual = new Date();
+    const mesAtual = dataAtual.getMonth() + 1; // O mês começa do 0, então adicionamos 1
+    const anoAtual = dataAtual.getFullYear();
+
+    this.dashboardService.getRelatorioMensal(mesAtual, anoAtual).subscribe({
       next: (relatorio: any) => {
         this.totalReceitas = relatorio.totalReceitas;
         this.totalDespesas = relatorio.totalDespesas;
         this.saldo = relatorio.saldo;
       },
-      error: (err) => {
+      error: (err: any) => {
         console.error('Erro ao carregar relatório:', err);
       },
     });
   }
 
   baixarRelatorio() {
-    // Implementação do método de download de relatório
-    this.http
-      .get('https://localhost:7181/api/Relatorio/download', {
-        responseType: 'blob',
-      })
-      .subscribe({
-        next: (data) => {
-          const url = window.URL.createObjectURL(data);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'relatorio-financeiro.pdf';
-          a.click();
-          window.URL.revokeObjectURL(url);
-        },
-        error: (err) => {
-          console.error('Erro ao baixar relatório:', err);
-        },
-      });
+    this.dashboardService.baixarRelatorio().subscribe({
+      next: (data: Blob) => {
+        const url = window.URL.createObjectURL(data);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'relatorio-financeiro.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      },
+      error: (err: any) => {
+        console.error('Erro ao baixar relatório:', err);
+      },
+    });
   }
 }
