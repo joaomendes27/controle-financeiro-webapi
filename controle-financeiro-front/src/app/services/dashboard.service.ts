@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
   private apiUrl = 'https://localhost:7181/api/Transacoes'; // Endpoint de Transações
+  private apiUrlDownload = 'https://localhost:7181/api/Relatorio/download';
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +27,18 @@ export class DashboardService {
     const token = localStorage.getItem('authToken');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get(`${this.apiUrl}/download`, {
+    // Pega o mês e ano atual
+    const dataAtual = new Date();
+    const mesAtual = dataAtual.getMonth() + 1;
+    const anoAtual = dataAtual.getFullYear();
+
+    // Cria o FormData
+    const formData = new FormData();
+    formData.append('mes', mesAtual.toString());
+    formData.append('ano', anoAtual.toString());
+
+    // Envia a requisição POST com FormData
+    return this.http.post(`${this.apiUrlDownload}`, formData, {
       responseType: 'blob',
       headers,
     });
