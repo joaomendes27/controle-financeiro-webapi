@@ -42,7 +42,7 @@ export class LoginComponent {
           this.router.navigate(['/dashboard']);
         },
         error: (err) => {
-          alert('Usuário ou Senha inváldos!');
+          alert('Usuário ou Senha inválidos!');
           console.error('Erro ao logar', err);
         },
       });
