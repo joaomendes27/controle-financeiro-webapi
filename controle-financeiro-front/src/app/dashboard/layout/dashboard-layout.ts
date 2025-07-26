@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-layout',
@@ -9,4 +10,14 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
 })
-export class DashboardLayout {}
+export class DashboardLayout {
+  constructor(private router: Router) {}
+
+  logout(): void {
+    // Limpar o token de autenticação
+    localStorage.removeItem('authToken');
+
+    // Redirecionar para a página de login
+    this.router.navigate(['/login']);
+  }
+}

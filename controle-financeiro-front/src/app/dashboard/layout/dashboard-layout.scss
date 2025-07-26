@@ -36,6 +36,24 @@
       }
     }
   }
+  /* Estilo para o botão de logout */
+  /* Estilo para o botão de logout */
+  .logout-btn {
+    background-color: #f44336; /* Cor vermelha */
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Ajusta o padding */
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    width: auto; /* Ajuste a largura para caber no conteúdo */
+    display: inline-block; /* Para garantir que o botão não ocupe a largura total */
+  }
+
+  .logout-btn:hover {
+    background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+  }
 
   .main-content {
     flex-grow: 1;
