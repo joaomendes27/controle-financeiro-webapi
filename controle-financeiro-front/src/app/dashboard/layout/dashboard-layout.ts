@@ -17,7 +17,7 @@ export class DashboardLayout {
     // Limpar o token de autenticação
     localStorage.removeItem('authToken');
 
-    // Redirecionar para a página de login
-    this.router.navigate(['/login']);
+    // Forçar a navegação para o login e limpar o histórico de navegação
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 }

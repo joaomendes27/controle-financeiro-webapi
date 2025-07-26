@@ -5,6 +5,7 @@ import { DashboardLayout } from './dashboard/layout/dashboard-layout';
 import { DashboardHome } from './dashboard/pages/dashboard-home';
 import { AdicionarTransacao } from './dashboard/pages/adicionar-transacao.component';
 import { ListarTransacoes } from './dashboard/pages/listar-transacoes.component';
+import { AuthGuard } from './auth/auth-guard'; // Importando o AuthGuard
 
 export const routes: Routes = [
   // Redireciona para login inicialmente
@@ -21,12 +22,12 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: 'login', component: LoginComponent },
 
   // Rota protegida: Dashboard
   {
     path: 'dashboard',
     component: DashboardLayout,
+    canActivate: [AuthGuard], // Protegendo as rotas com o AuthGuard
     children: [
       { path: '', component: DashboardHome },
       { path: 'nova-transacao', component: AdicionarTransacao },

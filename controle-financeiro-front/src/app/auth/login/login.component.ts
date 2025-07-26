@@ -17,6 +17,10 @@ export class LoginComponent {
   };
 
   constructor(public router: Router, private http: HttpClient) {}
+  ngOnInit(): void {
+    // Apagar qualquer token presente no localStorage ao acessar a página de login
+    localStorage.removeItem('authToken');
+  }
 
   login() {
     const formData = new FormData();
