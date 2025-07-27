@@ -1,15 +1,20 @@
 .dashboard-layout {
   display: flex;
-  justify-content: flex-start; /* Alinha o conteúdo ao longo do eixo horizontal */
-  align-items: center; /* Centraliza a sidebar verticalmente */
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 20px; /* Ajuste para a distância da barra de URL */
+  margin: 0 auto;
+  width: 100%;
 
   .sidebar {
-    width: 250px; /* Largura fixa */
+    width: 250px; /* Largura fixa da sidebar */
     background-color: #333;
     color: white;
     padding: 20px;
-    height: 50vh; /* A altura é metade da tela (50% da altura da viewport) */
-    position: relative; /* Necessário para o posicionamento absoluto */
+    height: 100vh; /* Usar altura total da tela */
+    position: fixed; /* Fixa a sidebar à esquerda */
+    top: 0;
+    left: 0;
 
     ul {
       list-style: none;
@@ -36,27 +41,56 @@
       }
     }
   }
-  /* Estilo para o botão de logout */
-  /* Estilo para o botão de logout */
+
   .logout-btn {
-    background-color: #f44336; /* Cor vermelha */
+    background-color: #f44336;
     color: white;
     border: none;
-    padding: 8px 16px; /* Ajusta o padding */
+    padding: 8px 16px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
     border-radius: 5px;
-    width: auto; /* Ajuste a largura para caber no conteúdo */
-    display: inline-block; /* Para garantir que o botão não ocupe a largura total */
+    width: auto;
+    display: inline-block;
   }
 
   .logout-btn:hover {
-    background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+    background-color: #d32f2f;
   }
 
   .main-content {
-    flex-grow: 1;
+    margin-left: 250px; /* Espaço para a sidebar */
     padding: 20px;
+    flex-grow: 1;
+    background-color: #f3f1ec;
+    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da tela */
+  }
+
+  @media (max-width: 1024px) {
+    .sidebar {
+      width: 200px; /* Diminui a largura da sidebar em telas médias */
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+
+    .main-content {
+      margin-left: 0;
+      padding: 10px;
+    }
   }
 }
