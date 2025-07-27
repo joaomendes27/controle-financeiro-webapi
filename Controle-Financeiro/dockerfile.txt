@@ -1,0 +1,22 @@
+# Definindo a imagem base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+# Definindo a imagem de build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["Controle-Financeiro/Controle-Financeiro.csproj", "Controle-Financeiro/"]
+RUN dotnet restore "Controle-Financeiro/Controle-Financeiro.csproj"
+COPY . .
+WORKDIR "/src/Controle-Financeiro"
+RUN dotnet build "Controle-Financeiro.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "Controle-Financeiro.csproj" -c Release -o /app/publish
+
+# Definindo a imagem de produção
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Controle-Financeiro.dll"]
