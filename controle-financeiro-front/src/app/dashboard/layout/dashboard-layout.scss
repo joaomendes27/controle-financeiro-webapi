@@ -2,23 +2,27 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 20px; /* Ajuste para a distância da barra de URL */
-  margin: 0 auto;
   width: 100%;
+  height: 100vh; /* Ocupa a altura total da tela */
 
   .sidebar {
-    width: 250px; /* Largura fixa da sidebar */
+    width: 250px;
     background-color: #333;
     color: white;
     padding: 20px;
-    height: 100vh; /* Usar altura total da tela */
-    position: fixed; /* Fixa a sidebar à esquerda */
+    height: 100vh; /* A sidebar vai ocupar a altura total da tela */
+    position: fixed;
     top: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Garante que os itens não fiquem no topo */
+    gap: 15px; /* Adiciona espaçamento entre os itens */
 
     ul {
       list-style: none;
       padding: 0;
+      flex-grow: 1; /* Garante que a lista ocupe o espaço restante */
 
       li {
         margin: 15px 0;
@@ -28,6 +32,7 @@
           text-decoration: none;
           font-size: 1.1rem;
           display: block;
+          padding: 10px;
 
           &:hover {
             color: #28a745;
@@ -40,36 +45,34 @@
         }
       }
     }
-  }
 
-  .logout-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
-    border-radius: 5px;
-    width: auto;
-    display: inline-block;
-  }
+    .logout-btn {
+      margin-top: auto; /* Posiciona o botão na parte inferior */
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+    }
 
-  .logout-btn:hover {
-    background-color: #d32f2f;
+    .logout-btn:hover {
+      background-color: #d32f2f;
+    }
   }
 
   .main-content {
-    margin-left: 250px; /* Espaço para a sidebar */
-    padding: 20px;
+    margin-left: 250px;
+    padding: 0 20px; /* Remove o padding superior */
     flex-grow: 1;
     background-color: #f3f1ec;
-    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da tela */
+    min-height: 100vh; /* Garante que ocupe a altura total da tela */
   }
 
   @media (max-width: 1024px) {
     .sidebar {
-      width: 200px; /* Diminui a largura da sidebar em telas médias */
+      width: 200px;
     }
 
     .main-content {
