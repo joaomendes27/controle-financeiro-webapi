@@ -47,7 +47,14 @@ builder.Services.AddSwaggerGen(options =>
 
 // Conexão com banco
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer("Server=MOSTEN0055\\SQLEXPRESS;Database=ControleFinanceiro;Trusted_Connection=True;TrustServerCertificate=True;"));
+{
+    var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
+    if (string.IsNullOrEmpty(connectionString))
+    {
+        throw new InvalidOperationException("A string de conexão do banco de dados não foi configurada.");
+    }
+    options.UseSqlServer(connectionString);
+});
 
 // Repositórios e Serviços
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
