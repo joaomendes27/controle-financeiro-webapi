@@ -30,7 +30,7 @@ A API está dentro da pasta `Controle-Financeiro`. Siga os passos abaixo para ro
     ```bash
     dotnet ef database update
     ```
-- **Banco de Dados**: A API está utilizando um **SQL Server LocalDB** local por padrão. Se você preferir usar outro banco de dados, basta alterar a string de conexão no arquivo `appsettings.json` para o banco de sua escolha.
+- **Banco de Dados**: A API está utilizando um **SQL Server LocalDB** local por padrão. Se você preferir usar outro banco de dados, basta alterar a string de conexão no arquivo `Program` para o banco de sua escolha.
 
 - Execute a aplicação:
     ```bash
