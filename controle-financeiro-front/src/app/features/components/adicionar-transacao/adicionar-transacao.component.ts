@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Importe o FormsModule
-import { CommonModule } from '@angular/common'; // Importando CommonModule
-import { DashboardService } from '../../services/dashboard.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { DashboardService } from '../../../services/dashboard.service';
 
 @Component({
   selector: 'app-adicionar-transacao',
-  standalone: true, // Isso garante que é um componente standalone
-  imports: [FormsModule, CommonModule], // Adicione FormsModule aqui
+  standalone: true,
+  imports: [FormsModule, CommonModule],
   templateUrl: './adicionar-transacao.component.html',
   styleUrls: ['./adicionar-transacao.scss'],
 })
@@ -38,7 +38,7 @@ export class AdicionarTransacao {
       this.transacao.descricao &&
       this.transacao.categoriaID
     ) {
-      this.transacao.dataTransacao = new Date().toISOString(); // Formato ISO 8601
+      this.transacao.dataTransacao = new Date().toISOString();
 
       this.dashboardService.adicionarTransacao(this.transacao).subscribe(
         (response) => {
@@ -47,8 +47,8 @@ export class AdicionarTransacao {
             valor: 0,
             descricao: '',
             categoriaID: 0,
-            dataTransacao: new Date().toISOString(), // Resetando a data
-          }; // Limpar o formulário
+            dataTransacao: new Date().toISOString(),
+          };
         },
         (error) => {
           this.message = 'Erro ao adicionar transação. Tente novamente.';

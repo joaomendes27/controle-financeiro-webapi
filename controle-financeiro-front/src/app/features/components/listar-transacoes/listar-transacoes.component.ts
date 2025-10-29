@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
-import { CommonModule } from '@angular/common';
-import { DatePipe } from '@angular/common'; // Importe o DatePipe
+import { DashboardService } from '../../../services/dashboard.service';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-listar-transacoes',
   templateUrl: './listar-transacoes.component.html',
   styleUrls: ['./listar-transacoes.component.scss'],
-  imports: [CommonModule], // Adicione FormsModule aqui
-  providers: [DatePipe], // Adicione o DatePipe nos providers
+  imports: [CommonModule],
+  providers: [DatePipe],
 })
 export class ListarTransacoes implements OnInit {
   receitas: any[] = [];

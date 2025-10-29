@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module'; // O módulo de rotas
-import { DashboardModule } from './dashboard/dashboard.module'; // O módulo do dashboard
+import { DashboardModule } from './features/components/sidebar/sidebar.module'; // O módulo do dashboard
 import { AppComponent } from './app'; // O componente standalone
 import { bootstrapApplication } from '@angular/platform-browser';
 

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { DashboardLayout } from './dashboard/layout/dashboard-layout';
-import { DashboardHome } from './dashboard/pages/dashboard-home';
-import { AdicionarTransacao } from './dashboard/pages/adicionar-transacao.component';
-import { ListarTransacoes } from './dashboard/pages/listar-transacoes.component';
-import { AuthGuard } from './auth/auth-guard'; // Importando o AuthGuard
+import { LoginComponent } from './features/auth/components/login/login.component';
+import { DashboardLayout } from './features/components/sidebar/sidebar';
+import { DashboardHome } from './features/components/dashboard-home/dashboard-home';
+import { AdicionarTransacao } from './features/components/adicionar-transacao/adicionar-transacao.component';
+import { ListarTransacoes } from './features/components/listar-transacoes/listar-transacoes.component';
+import { AuthGuard } from './features/auth/guards/auth-guard';
 
 export const routes: Routes = [
   // Redireciona para login inicialmente
@@ -14,7 +14,8 @@ export const routes: Routes = [
   // Rota para o módulo de autenticação com lazy loading
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    loadChildren: () =>
+      import('./features/auth/auth.module').then((m) => m.AuthModule),
   },
 
   // Login direto (se preferir deixar separado do módulo 'auth')

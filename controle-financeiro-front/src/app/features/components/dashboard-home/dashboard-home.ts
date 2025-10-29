@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../services/dashboard.service';
-import { CommonModule } from '@angular/common'; // Verifique se você já tem esta importação
+import { DashboardService } from '../../../services/dashboard.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-home',
