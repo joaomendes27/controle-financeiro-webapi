@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\RelatorioFeature\Commands\" />
+    <Folder Include="Features\RelatorioFeature\Queries\" />
+    <Folder Include="Features\TransacoesFeature\Commands\" />
+    <Folder Include="Features\TransacoesFeature\Queries\" />
+    <Folder Include="Features\UsuarioFeature\Commands\" />
+    <Folder Include="Features\UsuarioFeature\Queries\" />
+  </ItemGroup>
+
 </Project>

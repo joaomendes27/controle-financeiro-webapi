@@ -3,7 +3,7 @@ using Controle_Financeiro.Repositories;
 using Controle_Financeiro.Models;
 using Controle_Financeiro.Services.Auth;
 
-namespace Controle_Financeiro.Services
+namespace ControleFinanceiro.Application.Services
 {
     public class UsuarioService
     {

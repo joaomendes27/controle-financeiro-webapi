@@ -1,16 +1,24 @@
 ﻿using Controle_Financeiro.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Controle_Financeiro.Services.Auth
+namespace ControleFinanceiro.Infrastructure.Services.Auth
 {
     public class TokenService
     {
+        private readonly string _jwtKey;
+
+        public TokenService(IConfiguration configuration)
+        {
+            _jwtKey = configuration["Jwt:Key"];
+        }
+
         public string GenerateToken(Usuario usuario)
         {
-            var key = Encoding.ASCII.GetBytes(Key.Secret);
+            var key = Encoding.ASCII.GetBytes(_jwtKey);
             var tokenConfig = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]

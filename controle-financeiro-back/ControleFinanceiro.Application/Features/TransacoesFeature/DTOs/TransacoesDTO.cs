@@ -1,7 +1,7 @@
 ﻿
-using System.ComponentModel.DataAnnotations;
 
-namespace Controle_Financeiro.DTOs
+
+namespace ControleFinanceiro.Application.Features.TransacoesFeature.DTOs
 
 {
     public class TransacoesDTO

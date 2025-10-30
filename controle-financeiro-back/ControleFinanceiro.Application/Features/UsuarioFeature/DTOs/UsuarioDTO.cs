@@ -1,4 +1,4 @@
-﻿namespace Controle_Financeiro.DTOs
+﻿namespace ControleFinanceiro.Application.Features.UsuarioFeature.DTOs 
 {
     public class UsuarioDTO
     {
