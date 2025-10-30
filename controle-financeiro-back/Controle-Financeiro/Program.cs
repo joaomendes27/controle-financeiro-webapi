@@ -58,7 +58,7 @@ builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
 builder.Services.AddScoped<TransacaoService>();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddScoped<RelatorioService>();
+builder.Services.AddScoped<PdfService>();
 builder.Services.AddHttpContextAccessor(); 
 
 

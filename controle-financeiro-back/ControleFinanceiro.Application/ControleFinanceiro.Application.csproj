@@ -7,12 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\RelatorioFeature\Commands\" />
-    <Folder Include="Features\RelatorioFeature\Queries\" />
-    <Folder Include="Features\TransacoesFeature\Commands\" />
-    <Folder Include="Features\TransacoesFeature\Queries\" />
-    <Folder Include="Features\UsuarioFeature\Commands\" />
-    <Folder Include="Features\UsuarioFeature\Queries\" />
+    <Folder Include="Features\PdfFeature\Commands\" />
+    <Folder Include="Features\PdfFeature\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.10" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.1.2" />
+    <PackageReference Include="QuestPDF" Version="2023.10.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ControleFinanceiro.Domain\ControleFinanceiro.Domain.csproj" />
   </ItemGroup>
 
 </Project>

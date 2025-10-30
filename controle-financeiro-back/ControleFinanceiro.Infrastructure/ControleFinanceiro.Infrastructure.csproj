@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ControleFinanceiro.Application\ControleFinanceiro.Application.csproj" />
     <ProjectReference Include="..\ControleFinanceiro.Domain\ControleFinanceiro.Domain.csproj" />
+    <ProjectReference Include="..\ControleFinanceiro.Application\ControleFinanceiro.Application.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,12 @@
-﻿using Controle_Financeiro.Models;
+﻿using ControleFinanceiro.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ControleFinanceiro.Infrastructure.Services.Auth
+namespace ControleFinanceiro.Application.Services
+
 {
     public class TokenService
     {

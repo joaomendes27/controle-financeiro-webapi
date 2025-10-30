@@ -1,24 +1,24 @@
-﻿
+﻿using ControleFinanceiro.Application.Features.RelatorioFeature.DTOs;
+using ControleFinanceiro.Domain.Interfaces;
+using Microsoft.AspNetCore.Http;
+using QuestPDF.Fluent;
 
 namespace ControleFinanceiro.Application.Services
 {
-    public class RelatorioService
+    public class PdfService
     {
-        private readonly AppDbContext _context;
         private readonly ITransacaoRepository _repository;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public RelatorioService(
-            AppDbContext context,
+        public PdfService(
             ITransacaoRepository repository,
             IHttpContextAccessor httpContextAccessor)
         {
-            _context = context;
             _repository = repository;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<byte[]> GerarRelatorioMensalPdfAsync(RelatorioDownloadDTO dto)
+        public async Task<byte[]> GerarRelatorioMensalPdfAsync(PdfDownloadDTO dto)
         {
             try
             {
@@ -36,16 +36,16 @@ namespace ControleFinanceiro.Application.Services
                     .ToList();
 
                 var totalReceitas = transacoesDoMes
-                .Where(t => t.Categoria.Id == 1) 
-                .Sum(t => t.Valor);
+                    .Where(t => t.Categoria.Id == 1)
+                    .Sum(t => t.Valor);
 
                 var totalDespesas = transacoesDoMes
-                    .Where(t => t.Categoria.Id == 2) 
-                    .Sum(t => t.Valor); 
+                    .Where(t => t.Categoria.Id == 2)
+                    .Sum(t => t.Valor);
 
                 var saldo = totalReceitas + totalDespesas;
 
-                var document = Document.Create(container =>
+                var document = QuestPDF.Fluent.Document.Create(container =>
                 {
                     container.Page(page =>
                     {

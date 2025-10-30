@@ -1,6 +1,6 @@
 ﻿namespace ControleFinanceiro.Application.Features.RelatorioFeature.DTOs
 {
-    public class RelatorioMensalDTO
+    public class PdfMensalDTO
     {
         public double TotalReceitas { get; set; }
         public double TotalDespesas { get; set; }

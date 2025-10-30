@@ -1,41 +1,43 @@
-﻿using Controle_Financeiro.DTOs;
-using Controle_Financeiro.Services;
+﻿using ControleFinanceiro.Application.Features.UsuarioFeature.Commands;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 
 namespace Controle_Financeiro.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class UsuarioController : Controller
+    public class UsuarioController : ControllerBase
     {
-       private readonly UsuarioService _usuarioService;
+        private readonly CadastrarUsuarioCommandHandler _cadastrarHandler;
+        private readonly LoginUsuarioCommandHandler _loginHandler;
 
-        public UsuarioController(UsuarioService usuarioService)
+        public UsuarioController(
+            CadastrarUsuarioCommandHandler cadastrarHandler,
+            LoginUsuarioCommandHandler loginHandler)
         {
-           _usuarioService = usuarioService;
+            _cadastrarHandler = cadastrarHandler;
+            _loginHandler = loginHandler;
         }
 
         [HttpPost("cadastrar")]
-        public async Task<IActionResult> Cadastrar([FromForm]UsuarioDTO dto)
+        public async Task<IActionResult> Cadastrar([FromBody] CadastrarUsuarioCommand command)
         {
             try
             {
-                await _usuarioService.CadastrarAsync(dto);
+                await _cadastrarHandler.Handle(command);
                 return Ok("Usuário cadastrado com sucesso!");
-            } 
+            }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
-        [HttpPost("login")] 
-        public async Task<IActionResult> Login([FromForm] LoginDTO dto)
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginUsuarioCommand command)
         {
             try
             {
-                var token = await _usuarioService.LoginAsync(dto);
+                var token = await _loginHandler.Handle(command);
                 return Ok(new { Token = token });
             }
             catch (Exception ex)
