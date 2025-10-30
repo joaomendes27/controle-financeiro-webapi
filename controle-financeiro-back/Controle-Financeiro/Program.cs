@@ -1,12 +1,13 @@
-﻿using Controle_Financeiro.Data;
-using Controle_Financeiro.Repositories;
-using Controle_Financeiro.Services;
-using Controle_Financeiro.Services.Auth;
+﻿using ControleFinanceiro.Application.Services;
+using ControleFinanceiro.Infrastructure.Services.Auth;
+using ControleFinanceiro.Domain.Interfaces;
+using ControleFinanceiro.Infrastructure.Repositories;
+using ControleFinanceiro.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using QuestPDF.Infrastructure; 
+using QuestPDF.Infrastructure;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -64,7 +65,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<TokenService>();
 
 // Configuração do JWT
-var key = Encoding.ASCII.GetBytes(Key.Secret); 
+var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
 
 builder.Services.AddAuthentication(options =>
 {

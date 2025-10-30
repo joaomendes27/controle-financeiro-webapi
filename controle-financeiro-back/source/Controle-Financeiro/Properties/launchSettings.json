@@ -1,0 +1,11 @@
+﻿não tem a opção "other" no langague, so tem Docker
+Elixir
+Go
+Node
+Python 3
+Ruby
+Rust
+
+tem as configurações de Environment Variables
+Set environment-specific config and secrets (such as API keys), then read those values from your code. Learn more.
+

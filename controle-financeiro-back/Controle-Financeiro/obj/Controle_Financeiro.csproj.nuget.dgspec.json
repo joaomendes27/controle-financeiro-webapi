@@ -1,0 +1,336 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\Controle-Financeiro\\Controle_Financeiro.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\Controle-Financeiro\\Controle_Financeiro.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\Controle-Financeiro\\Controle_Financeiro.csproj",
+        "projectName": "Controle_Financeiro",
+        "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\Controle-Financeiro\\Controle_Financeiro.csproj",
+        "packagesPath": "C:\\Users\\MOSTEN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\Controle-Financeiro\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MOSTEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj"
+              },
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj"
+              },
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\ControleFinanceiro.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\ControleFinanceiro.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.13.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.18, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.7, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2023.10.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj",
+        "projectName": "ControleFinanceiro.Application",
+        "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj",
+        "packagesPath": "C:\\Users\\MOSTEN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MOSTEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj",
+        "projectName": "ControleFinanceiro.Domain",
+        "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj",
+        "packagesPath": "C:\\Users\\MOSTEN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MOSTEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\ControleFinanceiro.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\ControleFinanceiro.Infrastructure.csproj",
+        "projectName": "ControleFinanceiro.Infrastructure",
+        "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\ControleFinanceiro.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\MOSTEN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\MOSTEN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Application\\ControleFinanceiro.Application.csproj"
+              },
+              "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj": {
+                "projectPath": "C:\\Users\\MOSTEN\\Desktop\\Pessoal\\controle-financeiro-webapi\\controle-financeiro-back\\ControleFinanceiro.Domain\\ControleFinanceiro.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

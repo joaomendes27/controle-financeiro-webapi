@@ -7,6 +7,7 @@
 # .NET build
 Controle-Financeiro/bin/
 Controle-Financeiro/obj/
+Controle-Financeiro/appsettings.json
 
 # Logs
 *.log

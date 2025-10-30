@@ -44,7 +44,7 @@ namespace Controle_Financeiro.Controllers
 
         [Authorize]
         [HttpGet("usuario")]
-        public async Task<ActionResult<List<TransacaoRespostaDTO>>> GetDoUsuario([FromQuery] TipoCategoria? tipo)
+        public async Task<ActionResult<List<TransacaoResponseDTO>>> GetDoUsuario([FromQuery] TipoCategoriaEnum? tipo)
         {
             var usuarioId = int.Parse(User.FindFirst("id").Value);
             var resultado = await _service.ListarDoUsuarioAsync(usuarioId, tipo);
