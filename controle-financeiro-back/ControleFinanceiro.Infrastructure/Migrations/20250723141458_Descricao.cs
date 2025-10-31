@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Controle_Financeiro.Migrations
+namespace ControleFinanceiro.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class Descricao : Migration

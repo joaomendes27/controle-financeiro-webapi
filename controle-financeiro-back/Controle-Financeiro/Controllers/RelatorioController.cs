@@ -1,5 +1,5 @@
-﻿using Controle_Financeiro.DTOs;
-using Controle_Financeiro.Services;
+﻿using ControleFinanceiro.Application.Features.RelatorioFeature.DTOs;
+using ControleFinanceiro.Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,18 +9,18 @@ namespace Controle_Financeiro.Controllers
     [Route("api/[controller]")]
     public class RelatorioController : ControllerBase
     {
-        private readonly RelatorioService _relatorioService;
+        private readonly PdfService _pdfService;
 
-        public RelatorioController(RelatorioService relatorioService)
+        public RelatorioController(PdfService pdfService)
         {
-            _relatorioService = relatorioService;
+            _pdfService = pdfService;
         }
 
         [HttpPost("download")]
         [Authorize]
-        public async Task<IActionResult> BaixarRelatorio([FromForm] RelatorioDownloadDTO dto)
+        public async Task<IActionResult> BaixarRelatorio([FromForm] PdfDownloadDTO dto)
         {
-            var pdf = await _relatorioService.GerarRelatorioMensalPdfAsync(dto);
+            var pdf = await _pdfService.GerarRelatorioMensalPdfAsync(dto);
             return File(pdf, "application/pdf", $"relatorio-{dto.Mes}-{dto.Ano}.pdf");
         }
     }

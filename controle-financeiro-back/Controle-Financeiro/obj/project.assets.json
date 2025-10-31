@@ -2035,7 +2035,8 @@
         "dependencies": {
           "ControleFinanceiro.Application": "1.0.0",
           "ControleFinanceiro.Domain": "1.0.0",
-          "Microsoft.EntityFrameworkCore": "9.0.7"
+          "Microsoft.EntityFrameworkCore": "9.0.7",
+          "Microsoft.EntityFrameworkCore.SqlServer": "9.0.7"
         },
         "compile": {
           "bin/placeholder/ControleFinanceiro.Infrastructure.dll": {}

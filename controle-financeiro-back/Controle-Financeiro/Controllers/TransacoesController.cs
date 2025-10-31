@@ -29,16 +29,16 @@ namespace Controle_Financeiro.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody] TransacaoCommand command)
+        [HttpPost("adicionar")]
+        public async Task<IActionResult> AdicionarTransacao([FromBody] TransacaoCommand command)
         {
             await _commandHandler.Handle(command);
             return Ok();
         }
 
         [Authorize]
-        [HttpGet("usuario")]
-        public async Task<ActionResult<List<TransacoesResponseDTO>>> GetDoUsuario([FromQuery] TipoCategoriaEnum? tipo)
+        [HttpGet("listarUsuarioLogado")]
+        public async Task<ActionResult<List<TransacoesResponseDTO>>> ListarUsuarioLogado([FromQuery] TipoCategoriaEnum? tipo)
         {
             var usuarioId = int.Parse(User.FindFirst("id").Value);
             var query = new ListarTransacoesDoUsuarioQuery

@@ -1,5 +1,4 @@
 ﻿using ControleFinanceiro.Application.Services;
-using ControleFinanceiro.Infrastructure.Services.Auth;
 using ControleFinanceiro.Domain.Interfaces;
 using ControleFinanceiro.Infrastructure.Repositories;
 using ControleFinanceiro.Infrastructure.Data;
@@ -8,6 +7,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using QuestPDF.Infrastructure;
+using ControleFinanceiro.Application.Features.UsuarioFeature.Commands;
+using ControleFinanceiro.Application.Features.UsuarioFeature.Queries;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Commands.AdicionarTransacao;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.FiltrarTransacoesMesAno;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ListarTransacoesDoUsuario;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -52,17 +56,23 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Repositórios e Serviços
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<UsuarioService>();
-
 builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
-builder.Services.AddScoped<TransacaoService>();
 builder.Services.AddHttpContextAccessor();
-
 builder.Services.AddScoped<PdfService>();
-builder.Services.AddHttpContextAccessor(); 
-
-
 builder.Services.AddScoped<TokenService>();
+
+// Handlers de usuário
+builder.Services.AddScoped<CadastrarUsuarioCommandHandler>();
+builder.Services.AddScoped<LoginUsuarioCommandHandler>();
+builder.Services.AddScoped<BuscarUsuarioPorEmailQueryHandler>();
+
+// Handlers de transação
+builder.Services.AddScoped<TransacaoCommandHandler>();
+builder.Services.AddScoped<FiltrarTransacoesMesAnoQueryHandler>();
+builder.Services.AddScoped<ListarTransacoesDoUsuarioQueryHandler>();
+
+// Adicione aqui outros handlers conforme forem criados, por exemplo:
+// builder.Services.AddScoped<OutroHandler>();
 
 // Configuração do JWT
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
