@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DashboardService } from '../../../services/dashboard.service';
+import { TransacoesService } from '../../../services/transacoes.service';
 
 @Component({
   selector: 'app-adicionar-transacao',
@@ -16,13 +16,12 @@ export class AdicionarTransacao {
     valor: 0,
     descricao: '',
     categoriaID: 0,
-    dataTransacao: '', // Utilizando a data/hora atual
+    dataTransacao: '',
   };
   message: string | null = null;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private transacoesService: TransacoesService) {}
 
-  // Selecionar a categoria (Receita ou Despesa)
   selectCategoria(categoriaID: number): void {
     this.selectedCategoria = categoriaID;
     this.transacao.categoriaID = categoriaID;
@@ -31,7 +30,6 @@ export class AdicionarTransacao {
     this.selectedCategoria = null;
   }
 
-  // Enviar os dados para a API
   onSubmit(): void {
     if (
       this.transacao.valor &&
@@ -40,22 +38,27 @@ export class AdicionarTransacao {
     ) {
       this.transacao.dataTransacao = new Date().toISOString();
 
-      this.dashboardService.adicionarTransacao(this.transacao).subscribe(
-        (response) => {
+      this.transacoesService.adicionarTransacao(this.transacao).subscribe({
+        next: () => {
           this.message = 'Transação adicionada com sucesso!';
-          this.transacao = {
-            valor: 0,
-            descricao: '',
-            categoriaID: 0,
-            dataTransacao: new Date().toISOString(),
-          };
+          this.resetForm();
         },
-        (error) => {
+        error: () => {
           this.message = 'Erro ao adicionar transação. Tente novamente.';
-        }
-      );
+        },
+      });
     } else {
       this.message = 'Por favor, preencha todos os campos.';
     }
+  }
+
+  private resetForm(): void {
+    this.transacao = {
+      valor: 0,
+      descricao: '',
+      categoriaID: 0,
+      dataTransacao: '',
+    };
+    this.selectedCategoria = null;
   }
 }

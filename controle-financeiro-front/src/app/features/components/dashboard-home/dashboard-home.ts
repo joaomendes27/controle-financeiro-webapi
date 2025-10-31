@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from '../../../services/dashboard.service';
+import { RelatorioService } from '../../../services/relatorio.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,22 +10,22 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class DashboardHome implements OnInit {
-  totalReceitas: number = 0;
-  totalDespesas: number = 0;
-  saldo: number = 0;
+  totalReceitas = 0;
+  totalDespesas = 0;
+  saldo = 0;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private relatorioService: RelatorioService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.carregarRelatorioMensal();
   }
 
-  carregarRelatorioMensal() {
+  carregarRelatorioMensal(): void {
     const dataAtual = new Date();
-    const mesAtual = dataAtual.getMonth() + 1; // O mês começa do 0, então adicionamos 1
+    const mesAtual = dataAtual.getMonth() + 1;
     const anoAtual = dataAtual.getFullYear();
 
-    this.dashboardService.getRelatorioMensal(mesAtual, anoAtual).subscribe({
+    this.relatorioService.getRelatorioMensal(mesAtual, anoAtual).subscribe({
       next: (relatorio: any) => {
         this.totalReceitas = relatorio.totalReceitas;
         this.totalDespesas = relatorio.totalDespesas;
@@ -37,8 +37,8 @@ export class DashboardHome implements OnInit {
     });
   }
 
-  baixarRelatorio() {
-    this.dashboardService.baixarRelatorio().subscribe({
+  baixarRelatorio(): void {
+    this.relatorioService.baixarRelatorio().subscribe({
       next: (data: Blob) => {
         const url = window.URL.createObjectURL(data);
         const a = document.createElement('a');

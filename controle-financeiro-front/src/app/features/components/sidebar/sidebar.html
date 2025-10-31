@@ -1,22 +1,92 @@
 <div class="dashboard-layout">
-  <div class="sidebar">
+  <div class="menu-burguer-mobile" (click)="toggleMobileMenu()">
+    <span class="material-symbols-outlined">menu</span>
+  </div>
+  <!-- Sidebar normal -->
+  <div class="sidebar" *ngIf="!isMobileScreen">
+    <div class="sidebar-header">
+      <span class="system-name">Controle Financeiro</span>
+    </div>
+    <hr class="sidebar-divider" />
     <ul>
-      <li><a routerLink="/dashboard" routerLinkActive="active">Home</a></li>
       <li>
-        <a routerLink="/dashboard/nova-transacao" routerLinkActive="active"
-          >Adicionar Transação</a
-        >
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <span class="material-symbols-outlined">home</span>
+          <span>Home</span>
+        </a>
       </li>
       <li>
-        <a routerLink="/dashboard/listar-transacoes" routerLinkActive="active"
-          >Listar Transações</a
-        >
+        <a routerLink="/dashboard/nova-transacao" routerLinkActive="active">
+          <span class="material-symbols-outlined">add_circle</span>
+          <span>Adicionar Transação</span>
+        </a>
       </li>
       <li>
-        <button (click)="logout()" class="logout-btn">Sair</button>
+        <a routerLink="/dashboard/listar-transacoes" routerLinkActive="active">
+          <span class="material-symbols-outlined">list_alt</span>
+          <span>Listar Transações</span>
+        </a>
+      </li>
+      <li>
+        <button (click)="logout()" class="logout-btn">
+          <span class="material-symbols-outlined">logout</span>
+          <span>Sair</span>
+        </button>
       </li>
     </ul>
   </div>
+
+  <div
+    class="sidebar-mobile-backdrop"
+    *ngIf="showMobileMenu"
+    (click)="closeMobileMenu()"
+  ></div>
+  <!-- Sidebar mobile menu -->
+  <div class="sidebar-mobile-menu" *ngIf="showMobileMenu">
+    <div class="sidebar-header">
+      <span class="system-name">Controle Financeiro</span>
+    </div>
+    <hr class="sidebar-divider" />
+    <ul>
+      <li>
+        <a
+          routerLink="/dashboard"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          <span class="material-symbols-outlined">home</span>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/nova-transacao"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          <span class="material-symbols-outlined">add_circle</span>
+          <span>Adicionar Transação</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/listar-transacoes"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          <span class="material-symbols-outlined">list_alt</span>
+          <span>Listar Transações</span>
+        </a>
+      </li>
+      <li>
+        <button (click)="logout(); closeMobileMenu()" class="logout-btn">
+          <span class="material-symbols-outlined">logout</span>
+          <span>Sair</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+
   <div class="main-content">
     <router-outlet></router-outlet>
   </div>

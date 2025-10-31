@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,39 +16,26 @@ export class LoginComponent {
     senha: '',
   };
 
-  constructor(public router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private authService: AuthService) {}
+
   ngOnInit(): void {
-    // Apagar qualquer token presente no localStorage ao acessar a página de login
     localStorage.removeItem('authToken');
   }
 
   login() {
-    const formData = new FormData();
-    formData.append('EmailOuUsuario', this.form.emailOuUsuario);
-    formData.append('Senha', this.form.senha);
-
-    // Fazendo o POST para a API de login
-    this.http
-      .post('https://localhost:7181/api/Usuario/login', formData)
-      .subscribe({
-        next: (res: any) => {
-          console.log('Login sucesso', res);
-
-          // Armazenar o token no localStorage ou sessionStorage
-          const token = res.token; // Supondo que a resposta contenha um campo 'token'
-          localStorage.setItem('authToken', token);
-
-          // Redirecionar para a página do dashboard após o login
-          this.router.navigate(['/dashboard']);
-        },
-        error: (err) => {
-          alert('Usuário ou Senha inválidos!');
-          console.error('Erro ao logar', err);
-        },
-      });
+    this.authService.login(this.form).subscribe({
+      next: (res: any) => {
+        const token = res.token;
+        localStorage.setItem('authToken', token);
+        this.router.navigate(['/dashboard']);
+      },
+      error: () => {
+        alert('Usuário ou Senha inválidos!');
+      },
+    });
   }
+
   navigateToCadastro() {
-    console.log('Botão "Cadastrar" foi clicado');
     this.router.navigate(['/auth/cadastro']);
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 
@@ -10,7 +10,28 @@ import { RouterModule, Router } from '@angular/router';
   imports: [CommonModule, RouterModule],
 })
 export class DashboardLayout {
-  constructor(private router: Router) {}
+  showMobileMenu = false;
+  isMobileScreen = false;
+
+  constructor(private router: Router) {
+    this.checkScreen();
+  }
+
+  @HostListener('window:resize')
+  checkScreen() {
+    this.isMobileScreen = window.innerWidth <= 600;
+    if (!this.isMobileScreen) {
+      this.showMobileMenu = false;
+    }
+  }
+
+  toggleMobileMenu() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  closeMobileMenu() {
+    this.showMobileMenu = false;
+  }
 
   logout(): void {
     localStorage.removeItem('authToken');

@@ -1,99 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined");
+
 .dashboard-layout {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  height: 100vh; /* Ocupa a altura total da tela */
+  width: 100vw;
+  min-height: 100vh;
+  background: #f3f1ec;
 
   .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    height: 100vh; /* A sidebar vai ocupar a altura total da tela */
+    width: 170px;
+    background: #222a36;
+    color: #fff;
+    padding: 24px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Garante que os itens não fiquem no topo */
-    gap: 15px; /* Adiciona espaçamento entre os itens */
+    height: 100vh;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+
+    .sidebar-header {
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      color: #fff;
+      padding-bottom: 2px;
+    }
+
+    .sidebar-divider {
+      width: 80%;
+      border: none;
+      border-top: 1.5px solid #e3e8ef;
+      margin: 0 0 18px 0;
+    }
 
     ul {
+      width: 100%;
       list-style: none;
       padding: 0;
-      flex-grow: 1; /* Garante que a lista ocupe o espaço restante */
+      margin: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
 
       li {
-        margin: 15px 0;
+        width: 100%;
+        overflow: hidden;
 
-        a {
-          color: white;
+        a,
+        .logout-btn {
+          width: 100%;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 16px;
+          border-radius: 18px;
+          color: #fff;
+          font-size: 1rem;
           text-decoration: none;
-          font-size: 1.1rem;
-          display: block;
-          padding: 10px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          font-family: inherit;
+          box-sizing: border-box;
 
-          &:hover {
-            color: #28a745;
+          .material-symbols-outlined {
+            font-size: 1.3em;
+            opacity: 0.85;
+            transition: color 0.18s cubic-bezier(0.4, 0, 0.2, 1);
           }
 
-          &.active {
-            font-weight: bold;
-            color: #28a745;
+          &:hover {
+            background: linear-gradient(90deg, #e3e8efcc 60%, #cfd8dc99 100%);
+            color: #222a36;
+            box-shadow: 0 2px 12px 0 rgba(34, 42, 54, 0.07);
+          }
+        }
+
+        .logout-btn {
+          background: transparent;
+          color: #f44336;
+          margin-top: 24px;
+          justify-content: flex-start;
+          font-weight: 600;
+
+          &:hover {
+            background: #fbe9e7;
+            color: #b71c1c;
           }
         }
       }
     }
-
-    .logout-btn {
-      margin-top: auto; /* Posiciona o botão na parte inferior */
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-
-    .logout-btn:hover {
-      background-color: #d32f2f;
-    }
   }
 
   .main-content {
-    margin-left: 250px;
-    padding: 0 20px; /* Remove o padding superior */
-    flex-grow: 1;
-    background-color: #f3f1ec;
-    min-height: 100vh; /* Garante que ocupe a altura total da tela */
+    margin-left: 170px;
+    padding: 32px 24px;
+    flex: 1;
+    min-height: 100vh;
+    background: #f3f1ec;
+    transition: margin-left 0.2s;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 900px) {
     .sidebar {
-      width: 200px;
-    }
+      width: 54px;
+      padding: 16px 0 8px 0;
 
+      .sidebar-header,
+      .sidebar-divider {
+        display: none;
+      }
+
+      ul li a,
+      ul li .logout-btn {
+        justify-content: center;
+        padding: 10px 0;
+        font-size: 1.1rem;
+        gap: 0;
+        span:not(.material-symbols-outlined) {
+          display: none;
+        }
+      }
+    }
     .main-content {
-      margin-left: 0;
-      padding: 15px;
+      margin-left: 54px;
+      padding: 20px 6px;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     flex-direction: column;
-    align-items: center;
 
     .sidebar {
-      width: 100%;
-      height: auto;
-      position: relative;
+      display: none !important;
     }
 
     .main-content {
       margin-left: 0;
-      padding: 10px;
+      padding: 12px 2px;
+    }
+
+    .menu-burguer-mobile {
+      display: flex !important;
+      align-items: center;
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      background: #222a36;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+      .material-symbols-outlined {
+        color: #fff;
+        font-size: 1.4rem;
+      }
+    }
+
+    .sidebar-mobile-backdrop {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.35);
+      z-index: 299;
+      animation: fadeIn 0.2s;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    // Menu lateral mobile
+    .sidebar-mobile-menu {
+      display: flex !important;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100vh;
+      background: #222a36;
+      z-index: 300;
+      box-shadow: 2px 0 16px rgba(0, 0, 0, 0.18);
+      padding: 24px 0 16px 0;
+      animation: slideInSidebar 0.2s;
+      overflow: hidden;
+
+      .sidebar-header {
+        width: 100%;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+        color: #fff;
+        padding-bottom: 2px;
+      }
+
+      .sidebar-divider {
+        width: 80%;
+        border: none;
+        border-top: 1.5px solid #e3e8ef;
+        margin: 0 0 18px 0;
+      }
+
+      ul {
+        width: 100%;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        li {
+          width: 100%;
+          overflow: hidden;
+
+          a,
+          .logout-btn {
+            width: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 18px; // mais arredondado
+            color: #fff;
+            font-size: 1rem;
+            text-decoration: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            box-sizing: border-box;
+
+            .material-symbols-outlined {
+              font-size: 1.3em;
+              opacity: 0.85;
+              transition: color 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            &:hover {
+              background: linear-gradient(90deg, #e3e8efcc 60%, #cfd8dc99 100%);
+              color: #222a36;
+              box-shadow: 0 2px 12px 0 rgba(34, 42, 54, 0.07);
+            }
+          }
+
+          .logout-btn {
+            background: transparent;
+            color: #f44336;
+            margin-top: 24px;
+            justify-content: flex-start;
+            font-weight: 600;
+
+            &:hover {
+              background: #fbe9e7;
+              color: #b71c1c;
+            }
+          }
+        }
+      }
+    }
+    @keyframes slideInSidebar {
+      from {
+        transform: translateX(-220px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   }
 }
