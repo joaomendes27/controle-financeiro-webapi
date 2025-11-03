@@ -139,3 +139,10 @@
     opacity: 0.8;
   }
 }
+
+@media (max-width: 600px) {
+  .form-container .btn-back {
+    display: block;
+    margin-left: auto;
+  }
+}

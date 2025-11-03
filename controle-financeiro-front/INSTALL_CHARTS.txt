@@ -1,0 +1,3 @@
+// Adiciona instruções para instalar ng2-charts e chart.js
+// Execute no terminal:
+// npm install ng2-charts chart.js

@@ -6,20 +6,89 @@
     </button>
   </div>
   <div class="content">
-    <div class="totais">
-      <p>
-        <strong>Resumo do mês:</strong>
-      </p>
-      <p>
-        <strong>Total de Receitas: </strong>R$
-        {{ totalReceitas | number : "1.2-2" }}
-      </p>
-      <p>
-        <strong>Total de Despesas: </strong>R$
-        {{ totalDespesas | number : "1.2-2" }}
-      </p>
-      <p><strong>Saldo Final: </strong>R$ {{ saldo | number : "1.2-2" }}</p>
+    <div class="stats-header">
+      <div class="title">
+        <span class="kicker">Resumo de</span>
+        <h3>{{ periodoLabel }}</h3>
+      </div>
     </div>
-    <!-- Outras informações do Dashboard -->
+
+    <div class="stats-grid">
+      <div class="stat-card receita">
+        <div class="stat-title">Total de Receitas</div>
+        <div class="stat-value">
+          {{ totalReceitas | currency : "BRL" : "symbol" : "1.2-2" }}
+        </div>
+      </div>
+      <div class="stat-card despesa">
+        <div class="stat-title">Total de Despesas</div>
+        <div class="stat-value">
+          {{ totalDespesas | currency : "BRL" : "symbol" : "1.2-2" }}
+        </div>
+      </div>
+      <div
+        class="stat-card saldo"
+        [ngClass]="{
+          positivo: saldo > 0,
+          negativo: saldo < 0,
+          neutro: saldo === 0
+        }"
+      >
+        <div class="stat-title">Saldo Final</div>
+        <div class="stat-value">
+          {{ saldo | currency : "BRL" : "symbol" : "1.2-2" }}
+        </div>
+      </div>
+    </div>
+    <div class="charts">
+      <div class="chart-card">
+        <h3>Receitas do Mês</h3>
+        <canvas
+          baseChart
+          [data]="receitasChartData"
+          [type]="'pie'"
+          [options]="pieChartOptions"
+        ></canvas>
+        <div class="chart-summary">
+          <div
+            class="summary-row"
+            *ngFor="let item of receitasResumo; let i = index"
+          >
+            <span
+              class="dot"
+              [style.backgroundColor]="receitasColors[i]"
+            ></span>
+            <span class="label">{{ item.label }}</span>
+            <span class="value">{{
+              item.valor | currency : "BRL" : "symbol" : "1.2-2"
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Despesas do Mês</h3>
+        <canvas
+          baseChart
+          [data]="despesasChartData"
+          [type]="'pie'"
+          [options]="pieChartOptions"
+        ></canvas>
+        <div class="chart-summary">
+          <div
+            class="summary-row"
+            *ngFor="let item of despesasResumo; let i = index"
+          >
+            <span
+              class="dot"
+              [style.backgroundColor]="despesasColors[i]"
+            ></span>
+            <span class="label">{{ item.label }}</span>
+            <span class="value">{{
+              item.valor | currency : "BRL" : "symbol" : "1.2-2"
+            }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

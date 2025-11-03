@@ -31,13 +31,151 @@
     border-radius: 10px;
   }
 
-  .totais {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-    font-weight: bold;
+  .stats-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+
+    .title {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      .kicker {
+        font-size: 0.85rem;
+        color: #6b7280;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #111827;
+      }
+    }
   }
 
-  @media (max-width: 768px) {
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .stat-card {
+      border-radius: 12px;
+      padding: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 8px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #eef2f7;
+
+      .stat-title {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 6px;
+      }
+      .stat-value {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #111827;
+      }
+      &.receita {
+        background: linear-gradient(180deg, #ecfdf5, #ffffff);
+        border-color: #d1fae5;
+        .stat-value {
+          color: #047857;
+        }
+      }
+      &.despesa {
+        background: linear-gradient(180deg, #fef2f2, #ffffff);
+        border-color: #fee2e2;
+        .stat-value {
+          color: #b91c1c;
+        }
+      }
+      &.saldo.positivo {
+        background: linear-gradient(180deg, #f0fdf4, #ffffff);
+        border-color: #dcfce7;
+        .stat-value {
+          color: #15803d;
+        }
+      }
+      &.saldo.negativo {
+        background: linear-gradient(180deg, #fef2f2, #ffffff);
+        border-color: #fee2e2;
+        .stat-value {
+          color: #b91c1c;
+        }
+      }
+      &.saldo.neutro {
+        background: linear-gradient(180deg, #f8fafc, #ffffff);
+        border-color: #e5e7eb;
+        .stat-value {
+          color: #374151;
+        }
+      }
+    }
+  }
+
+  .charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+
+    .chart-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+      h3 {
+        margin: 0 0 10px 0;
+        font-size: 1rem;
+      }
+
+      canvas {
+        max-height: 220px;
+        width: 100%;
+      }
+
+      .chart-summary {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.92rem;
+
+        .summary-row {
+          display: grid;
+          grid-template-columns: 14px 1fr auto;
+          align-items: center;
+          gap: 10px;
+
+          .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+          }
+
+          .label {
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+
+          .value {
+            color: #111;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
     .header {
       flex-direction: column;
       text-align: center;
@@ -45,6 +183,26 @@
 
     .btn-download {
       margin-top: 10px;
+    }
+
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .charts {
+      grid-template-columns: 1fr;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .charts .chart-card {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      overflow: hidden;
+      canvas {
+        height: 240px;
+      }
     }
   }
 }

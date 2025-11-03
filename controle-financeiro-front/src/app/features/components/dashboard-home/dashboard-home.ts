@@ -1,29 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { RelatorioService } from '../../../services/relatorio.service';
 import { CommonModule } from '@angular/common';
+import { RelatorioService } from '../../../services/relatorio.service';
+import { TransacoesService } from '../../../services/transacoes.service';
+import { BaseChartDirective } from 'ng2-charts';
+import { ChartData, ChartOptions } from 'chart.js';
+import { ChartPaletteService } from '../../../shared/chart-palette.service';
+import 'chart.js/auto';
+
+type Transacao = {
+  categoriaId: number;
+  descricao: string;
+  valor: number;
+  data?: string | Date;
+};
+
+type ResumoItem = { label: string; valor: number };
 
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.html',
   styleUrls: ['./dashboard-home.scss'],
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, BaseChartDirective],
 })
 export class DashboardHome implements OnInit {
   totalReceitas = 0;
   totalDespesas = 0;
   saldo = 0;
+  periodoLabel = '';
 
-  constructor(private relatorioService: RelatorioService) {}
+  receitasChartData: ChartData<'pie', number[], string | string[]> = {
+    labels: [],
+    datasets: [{ data: [] }],
+  };
+
+  despesasChartData: ChartData<'pie', number[], string | string[]> = {
+    labels: [],
+    datasets: [{ data: [] }],
+  };
+
+  pieChartOptions: ChartOptions<'pie'> = {
+    responsive: true,
+    plugins: {
+      legend: { position: 'bottom' },
+      tooltip: { enabled: true },
+    },
+  };
+
+  receitasResumo: ResumoItem[] = [];
+  despesasResumo: ResumoItem[] = [];
+
+  receitasColors: string[] = [];
+  despesasColors: string[] = [];
+
+  constructor(
+    private relatorioService: RelatorioService,
+    private transacoesService: TransacoesService,
+    private palette: ChartPaletteService
+  ) {}
 
   ngOnInit(): void {
     this.carregarRelatorioMensal();
+    this.carregarTransacoesMesAtual();
   }
 
   carregarRelatorioMensal(): void {
     const dataAtual = new Date();
     const mesAtual = dataAtual.getMonth() + 1;
     const anoAtual = dataAtual.getFullYear();
+    this.periodoLabel = this.titleCase(
+      dataAtual.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+    );
 
     this.relatorioService.getRelatorioMensal(mesAtual, anoAtual).subscribe({
       next: (relatorio: any) => {
@@ -51,5 +98,126 @@ export class DashboardHome implements OnInit {
         console.error('Erro ao baixar relatório:', err);
       },
     });
+  }
+
+  private carregarTransacoesMesAtual(): void {
+    const { mes, ano } = this.getMesAnoAtual();
+    this.transacoesService.filtrarTransacoesPorMesAno(mes, ano).subscribe({
+      next: (transacoes) => this.atualizarGraficos(transacoes || []),
+      error: (err) => console.error('Erro ao carregar transações:', err),
+    });
+  }
+
+  private atualizarGraficos(transacoes: Transacao[]): void {
+    const receitas = transacoes.filter((t) => t.categoriaId === 1);
+    const despesas = transacoes.filter((t) => t.categoriaId === 2);
+
+    const rec = this.somarPorDescricao(receitas);
+    const des = this.somarPorDescricao(despesas);
+
+    this.receitasColors = this.palette.getPaletteExcludingRed(
+      rec.labels.length
+    );
+    this.despesasColors = this.palette.getPalette(des.labels.length);
+
+    this.receitasChartData = this.criarChartData(
+      rec.labels,
+      rec.valores,
+      'Receitas',
+      this.receitasColors
+    );
+
+    this.despesasChartData = this.criarChartData(
+      des.labels,
+      des.valores,
+      'Despesas',
+      this.despesasColors
+    );
+
+    this.receitasResumo = this.criarResumo(rec.labels, rec.valores);
+    this.despesasResumo = this.criarResumo(des.labels, des.valores);
+  }
+
+  private somarPorDescricao(itens: Transacao[]): {
+    labels: string[];
+    valores: number[];
+  } {
+    const mapa = new Map<string, { label: string; total: number }>();
+
+    for (const item of itens) {
+      const original = (item.descricao ?? 'Sem descrição').toString();
+      const key = this.normalizar(original);
+      const atual = mapa.get(key);
+      if (atual) {
+        atual.total += Number(item.valor) || 0;
+        if (this.temAcento(original) && !this.temAcento(atual.label)) {
+          atual.label = this.titleCase(original);
+        }
+      } else {
+        mapa.set(key, {
+          label: this.titleCase(original),
+          total: Number(item.valor) || 0,
+        });
+      }
+    }
+
+    const labels: string[] = [];
+    const valores: number[] = [];
+    mapa.forEach((v) => {
+      labels.push(v.label);
+      valores.push(Number(v.total.toFixed(2)));
+    });
+    return { labels, valores };
+  }
+
+  private criarChartData(
+    labels: string[],
+    valores: number[],
+    datasetLabel: string,
+    backgroundColor: string[]
+  ): ChartData<'pie', number[], string | string[]> {
+    return {
+      labels,
+      datasets: [
+        {
+          data: valores,
+          label: datasetLabel,
+          backgroundColor,
+          borderColor: '#ffffff',
+          borderWidth: 2,
+        },
+      ],
+    };
+  }
+
+  private criarResumo(labels: string[], valores: number[]): ResumoItem[] {
+    return labels
+      .map((label, i) => ({ label, valor: valores[i] ?? 0 }))
+      .sort((a, b) => b.valor - a.valor);
+  }
+
+  private normalizar(texto: string): string {
+    return texto
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim();
+  }
+
+  private temAcento(texto: string): boolean {
+    return /[\u0300-\u036f]/.test(texto.normalize('NFD'));
+  }
+
+  private titleCase(texto: string): string {
+    return texto
+      .toLowerCase()
+      .split(/\s+/)
+      .map((p) => p.charAt(0).toUpperCase() + p.slice(1))
+      .join(' ');
+  }
+
+  private getMesAnoAtual(): { mes: number; ano: number } {
+    const hoje = new Date();
+    return { mes: hoje.getMonth() + 1, ano: hoje.getFullYear() };
   }
 }
