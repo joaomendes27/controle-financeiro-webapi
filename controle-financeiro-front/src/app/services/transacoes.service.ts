@@ -24,7 +24,7 @@ export class TransacoesService {
     const payload = token.split('.')[1];
     const decodedPayload = atob(payload);
     const payloadObj = JSON.parse(decodedPayload);
-    // Ajuste o nome do campo conforme o backend (ex: 'nameid', 'sub', 'usuarioId', etc)
+
     return Number(
       payloadObj['usuarioId'] || payloadObj['nameid'] || payloadObj['sub']
     );
@@ -34,9 +34,18 @@ export class TransacoesService {
     const token = localStorage.getItem('authToken');
     const usuarioId = this.getUsuarioIdFromToken(token ?? '');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    // Envia o usuarioId como query string
     return this.http.get<any[]>(
       `${this.apiUrl}/listarPorUsuario?usuarioId=${usuarioId}`,
+      { headers }
+    );
+  }
+
+  filtrarTransacoesPorMesAno(mes: number, ano: number): Observable<any[]> {
+    const token = localStorage.getItem('authToken');
+    const usuarioId = this.getUsuarioIdFromToken(token ?? '');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any[]>(
+      `${this.apiUrl}/filtrarTransacoesPorMesAno?usuarioId=${usuarioId}&mes=${mes}&ano=${ano}`,
       { headers }
     );
   }

@@ -1,6 +1,47 @@
 <div class="transacoes-container">
   <h2>Transações</h2>
 
+  <!-- Acordeão para filtro -->
+  <div class="acordeao-filtro">
+    <button
+      type="button"
+      class="acordeao-toggle"
+      (click)="mostrarFiltro = !mostrarFiltro"
+    >
+      {{ mostrarFiltro ? "Fechar" : "Filtrar por Data" }}
+    </button>
+    <div class="acordeao-conteudo" *ngIf="mostrarFiltro">
+      <form (ngSubmit)="filtrarTransacoes()" class="filtro-form">
+        <label>
+          Mês:
+          <input
+            type="text"
+            maxlength="2"
+            pattern="^(0?[1-9]|1[0-2])$"
+            [(ngModel)]="mesSelecionado"
+            name="mes"
+            required
+            placeholder="MM"
+          />
+        </label>
+        <label>
+          Ano:
+          <input
+            type="text"
+            maxlength="4"
+            pattern="^[0-9]{4}$"
+            [(ngModel)]="anoSelecionado"
+            name="ano"
+            required
+            placeholder="AAAA"
+          />
+        </label>
+        <button type="submit">Filtrar</button>
+        <button type="button" (click)="limparFiltro()">Limpar Filtro</button>
+      </form>
+    </div>
+  </div>
+
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
   <div class="transacoes">
@@ -20,7 +61,6 @@
             <td>{{ receita.descricao }}</td>
             <td>{{ receita.valor | currency }}</td>
             <td>{{ receita.dataTransacao }}</td>
-            <!-- A data já formatada -->
           </tr>
         </tbody>
       </table>
@@ -43,7 +83,6 @@
             <td>{{ despesa.descricao }}</td>
             <td>{{ despesa.valor | currency }}</td>
             <td>{{ despesa.dataTransacao }}</td>
-            <!-- A data já formatada -->
           </tr>
         </tbody>
       </table>

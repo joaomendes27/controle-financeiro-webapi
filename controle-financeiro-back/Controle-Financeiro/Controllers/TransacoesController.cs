@@ -4,6 +4,7 @@ using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.FiltrarT
 using ControleFinanceiro.Application.Features.TransacoesFeature.DTOs;
 using ControleFinanceiro.Application.Features.RelatorioFeature.DTOs;
 using ControleFinanceiro.Domain.Enums; 
+using ControleFinanceiro.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,15 +18,18 @@ namespace Controle_Financeiro.Controllers
         private readonly TransacaoCommandHandler _commandHandler;
         private readonly ListarTransacoesDoUsuarioQueryHandler _listarQueryHandler;
         private readonly FiltrarTransacoesMesAnoQueryHandler _filtrarQueryHandler;
+        private readonly ITransacaoRepository _repository;
 
         public TransacoesController(
             TransacaoCommandHandler commandHandler,
             ListarTransacoesDoUsuarioQueryHandler listarQueryHandler,
-            FiltrarTransacoesMesAnoQueryHandler filtrarQueryHandler)
+            FiltrarTransacoesMesAnoQueryHandler filtrarQueryHandler,
+            ITransacaoRepository repository)
         {
             _commandHandler = commandHandler;
             _listarQueryHandler = listarQueryHandler;
             _filtrarQueryHandler = filtrarQueryHandler;
+            _repository = repository;
         }
 
         [Authorize]
@@ -62,6 +66,27 @@ namespace Controle_Financeiro.Controllers
             };
             var relatorio = await _filtrarQueryHandler.Handle(query);
             return Ok(relatorio);
+        }
+
+        [Authorize]
+        [HttpGet("filtrarTransacoesPorMesAno")]
+        public async Task<ActionResult<List<TransacoesResponseDTO>>> FiltrarTransacoesPorMesAno(
+            [FromQuery] int usuarioId,
+            [FromQuery] int mes,
+            [FromQuery] int ano)
+        {
+            var transacoes = await _repository.FiltrarMesAnoAsync(usuarioId, mes, ano);
+
+            var resultado = transacoes.Select(t => new TransacoesResponseDTO
+            {
+                Id = t.Id,
+                Valor = t.Valor,
+                Descricao = t.Descricao,
+                Data = t.DataTransacao,
+                CategoriaId = t.Categoria.Id
+            }).ToList();
+
+            return Ok(resultado);
         }
     }
 }
