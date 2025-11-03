@@ -22,7 +22,7 @@ namespace ControleFinanceiro.Application.Features.TransacoesFeature.Queries.List
                 Valor = t.Valor,
                 Descricao = t.Descricao,
                 Data = t.DataTransacao,
-                Categoria = t.Categoria.Nome
+                CategoriaId = t.Categoria.Id, 
             }).ToList();
         }
     }

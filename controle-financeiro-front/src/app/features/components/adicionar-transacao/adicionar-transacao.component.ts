@@ -15,16 +15,16 @@ export class AdicionarTransacao {
   transacao = {
     valor: 0,
     descricao: '',
-    categoriaID: 0,
+    categoriaId: 0,
     dataTransacao: '',
   };
   message: string | null = null;
 
   constructor(private transacoesService: TransacoesService) {}
 
-  selectCategoria(categoriaID: number): void {
-    this.selectedCategoria = categoriaID;
-    this.transacao.categoriaID = categoriaID;
+  selectCategoria(categoriaId: number): void {
+    this.selectedCategoria = categoriaId;
+    this.transacao.categoriaId = categoriaId;
   }
   goBack(): void {
     this.selectedCategoria = null;
@@ -34,7 +34,7 @@ export class AdicionarTransacao {
     if (
       this.transacao.valor &&
       this.transacao.descricao &&
-      this.transacao.categoriaID
+      this.transacao.categoriaId
     ) {
       this.transacao.dataTransacao = new Date().toISOString();
 
@@ -56,7 +56,7 @@ export class AdicionarTransacao {
     this.transacao = {
       valor: 0,
       descricao: '',
-      categoriaID: 0,
+      categoriaId: 0,
       dataTransacao: '',
     };
     this.selectedCategoria = null;

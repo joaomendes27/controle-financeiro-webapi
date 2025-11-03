@@ -2,8 +2,6 @@
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace ControleFinanceiro.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -17,8 +15,8 @@ namespace ControleFinanceiro.Infrastructure.Migrations
                 columns: new[] { "Id", "Nome", "Tipo" },
                 values: new object[,]
                 {
-                    { 1, "Salário", 1 },
-                    { 2, "Alimentação", 2 }
+                    { 1, "Receita", 1 },
+                    { 2, "Despesa", 2 }
                 });
         }
 

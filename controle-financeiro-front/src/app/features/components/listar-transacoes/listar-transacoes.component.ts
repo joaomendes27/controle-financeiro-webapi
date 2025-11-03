@@ -24,34 +24,31 @@ export class ListarTransacoes implements OnInit {
   }
 
   carregarTransacoes(): void {
-    this.transacoesService.listarReceitas().subscribe({
+    const usuarioId = Number(localStorage.getItem('usuarioId'));
+    this.transacoesService.listarTransacoesPorUsuario().subscribe({
       next: (dados) => {
-        this.receitas = dados.map((transacao) => ({
-          ...transacao,
-          dataTransacao: this.datePipe.transform(
-            new Date(transacao.data),
-            'dd/MM/yyyy'
-          ),
-        }));
-      },
-      error: (erro) => {
-        this.errorMessage = 'Erro ao carregar receitas.';
-        console.error(erro);
-      },
-    });
+        this.receitas = dados
+          .filter((t) => t.categoriaId === 1)
+          .map((transacao) => ({
+            ...transacao,
+            dataTransacao: this.datePipe.transform(
+              new Date(transacao.data),
+              'dd/MM/yyyy'
+            ),
+          }));
 
-    this.transacoesService.listarDespesas().subscribe({
-      next: (dados) => {
-        this.despesas = dados.map((transacao) => ({
-          ...transacao,
-          dataTransacao: this.datePipe.transform(
-            new Date(transacao.data),
-            'dd/MM/yyyy'
-          ),
-        }));
+        this.despesas = dados
+          .filter((t) => t.categoriaId === 2)
+          .map((transacao) => ({
+            ...transacao,
+            dataTransacao: this.datePipe.transform(
+              new Date(transacao.data),
+              'dd/MM/yyyy'
+            ),
+          }));
       },
       error: (erro) => {
-        this.errorMessage = 'Erro ao carregar despesas.';
+        this.errorMessage = 'Erro ao carregar transações.';
         console.error(erro);
       },
     });

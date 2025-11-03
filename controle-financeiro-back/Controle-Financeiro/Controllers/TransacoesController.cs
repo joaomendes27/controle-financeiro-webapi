@@ -37,14 +37,13 @@ namespace Controle_Financeiro.Controllers
         }
 
         [Authorize]
-        [HttpGet("listarUsuarioLogado")]
-        public async Task<ActionResult<List<TransacoesResponseDTO>>> ListarUsuarioLogado([FromQuery] TipoCategoriaEnum? tipo)
+        [HttpGet("listarPorUsuario")]
+        public async Task<ActionResult<List<TransacoesResponseDTO>>> ListarPorUsuario([FromQuery] int usuarioId)
         {
-            var usuarioId = int.Parse(User.FindFirst("id").Value);
             var query = new ListarTransacoesDoUsuarioQuery
             {
                 UsuarioId = usuarioId,
-                Tipo = tipo
+                Tipo = null 
             };
             var resultado = await _listarQueryHandler.Handle(query);
             return Ok(resultado);
