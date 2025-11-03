@@ -19,7 +19,6 @@ export class AdicionarTransacao {
     dataTransacao: '',
   };
   message: string | null = null;
-
   constructor(private transacoesService: TransacoesService) {}
 
   selectCategoria(categoriaId: number): void {

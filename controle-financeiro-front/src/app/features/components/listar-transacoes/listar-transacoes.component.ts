@@ -29,28 +29,44 @@ export class ListarTransacoes implements OnInit {
     this.carregarTransacoes();
   }
 
+  private getTimestamp(t: any): number {
+    const raw =
+      t?.data ?? t?.dataTransacao ?? t?.dataRegistro ?? t?.dataCriacao;
+    const d = raw ? new Date(raw) : null;
+    return d?.getTime?.() || 0;
+  }
+
   carregarTransacoes(): void {
     this.transacoesService.listarTransacoesPorUsuario().subscribe({
       next: (dados) => {
-        this.receitas = dados
-          .filter((t) => t.categoriaId === 1)
-          .map((transacao) => ({
-            ...transacao,
-            dataTransacao: this.datePipe.transform(
-              new Date(transacao.data),
-              'dd/MM/yyyy'
-            ),
-          }));
+        const receitasRaw = dados.filter((t) => t.categoriaId === 1);
+        const despesasRaw = dados.filter((t) => t.categoriaId === 2);
 
-        this.despesas = dados
-          .filter((t) => t.categoriaId === 2)
-          .map((transacao) => ({
-            ...transacao,
-            dataTransacao: this.datePipe.transform(
-              new Date(transacao.data),
-              'dd/MM/yyyy'
-            ),
-          }));
+        this.receitas = receitasRaw
+          .sort((a, b) => this.getTimestamp(b) - this.getTimestamp(a))
+          .map((transacao) => {
+            const baseData = transacao.data ?? transacao.dataTransacao;
+            return {
+              ...transacao,
+              dataTransacao: this.datePipe.transform(
+                new Date(baseData),
+                'dd/MM/yyyy'
+              ),
+            };
+          });
+
+        this.despesas = despesasRaw
+          .sort((a, b) => this.getTimestamp(b) - this.getTimestamp(a))
+          .map((transacao) => {
+            const baseData = transacao.data ?? transacao.dataTransacao;
+            return {
+              ...transacao,
+              dataTransacao: this.datePipe.transform(
+                new Date(baseData),
+                'dd/MM/yyyy'
+              ),
+            };
+          });
       },
       error: (erro) => {
         this.errorMessage = 'Erro ao carregar transações.';
@@ -64,25 +80,34 @@ export class ListarTransacoes implements OnInit {
       .filtrarTransacoesPorMesAno(this.mesSelecionado, this.anoSelecionado)
       .subscribe({
         next: (dados) => {
-          this.receitas = dados
-            .filter((t) => t.categoriaId === 1)
-            .map((transacao) => ({
-              ...transacao,
-              dataTransacao: this.datePipe.transform(
-                new Date(transacao.data),
-                'dd/MM/yyyy'
-              ),
-            }));
+          const receitasRaw = dados.filter((t) => t.categoriaId === 1);
+          const despesasRaw = dados.filter((t) => t.categoriaId === 2);
 
-          this.despesas = dados
-            .filter((t) => t.categoriaId === 2)
-            .map((transacao) => ({
-              ...transacao,
-              dataTransacao: this.datePipe.transform(
-                new Date(transacao.data),
-                'dd/MM/yyyy'
-              ),
-            }));
+          this.receitas = receitasRaw
+            .sort((a, b) => this.getTimestamp(b) - this.getTimestamp(a))
+            .map((transacao) => {
+              const baseData = transacao.data ?? transacao.dataTransacao;
+              return {
+                ...transacao,
+                dataTransacao: this.datePipe.transform(
+                  new Date(baseData),
+                  'dd/MM/yyyy'
+                ),
+              };
+            });
+
+          this.despesas = despesasRaw
+            .sort((a, b) => this.getTimestamp(b) - this.getTimestamp(a))
+            .map((transacao) => {
+              const baseData = transacao.data ?? transacao.dataTransacao;
+              return {
+                ...transacao,
+                dataTransacao: this.datePipe.transform(
+                  new Date(baseData),
+                  'dd/MM/yyyy'
+                ),
+              };
+            });
           this.errorMessage = '';
         },
         error: (erro) => {

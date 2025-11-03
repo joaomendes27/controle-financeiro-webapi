@@ -12,6 +12,8 @@ using ControleFinanceiro.Application.Features.UsuarioFeature.Queries;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Commands.AdicionarTransacao;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.FiltrarTransacoesMesAno;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ListarTransacoesDoUsuario;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Services;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Commands.Recorrencias;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -35,31 +37,35 @@ builder.Services.AddSwaggerGen(options =>
     });
 
     options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
-                {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
+ {
+ {
+ new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+ {
+ Reference = new Microsoft.OpenApi.Models.OpenApiReference
+ {
+ Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+ Id = "Bearer"
+ }
+ },
+ new string[] {}
+ }
+ });
 });
 
 // Conexão com banco
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer("Server=MOSTEN0055\\SQLEXPRESS;Database=ControleFinanceiro;Trusted_Connection=True;TrustServerCertificate=True;"));
+ options.UseSqlServer("Server=MOSTEN0055\\SQLEXPRESS;Database=ControleFinanceiro;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 // Repositórios e Serviços
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
+builder.Services.AddScoped<IRecorrenciaTransacaoRepository, RecorrenciaTransacaoRepository>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<PdfService>();
 builder.Services.AddScoped<TokenService>();
+
+// Serviços de aplicação
+builder.Services.AddScoped<IRecorrenciaService, RecorrenciaService>();
 
 // Handlers de usuário
 builder.Services.AddScoped<CadastrarUsuarioCommandHandler>();
@@ -71,8 +77,8 @@ builder.Services.AddScoped<TransacaoCommandHandler>();
 builder.Services.AddScoped<FiltrarTransacoesMesAnoQueryHandler>();
 builder.Services.AddScoped<ListarTransacoesDoUsuarioQueryHandler>();
 
-// Adicione aqui outros handlers conforme forem criados, por exemplo:
-// builder.Services.AddScoped<OutroHandler>();
+// Handlers de recorrência
+builder.Services.AddScoped<CriarRecorrenciaCommandHandler>();
 
 // Configuração do JWT
 var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"]);
@@ -99,8 +105,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+     .AllowAnyHeader()
+     .AllowAnyMethod();
     });
 });
 
@@ -116,7 +122,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 
-app.UseAuthentication(); 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

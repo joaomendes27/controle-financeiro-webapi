@@ -28,6 +28,12 @@
         </a>
       </li>
       <li>
+        <a routerLink="/dashboard/recorrencias" routerLinkActive="active">
+          <span class="material-symbols-outlined">event_repeat</span>
+          <span>Recorrências</span>
+        </a>
+      </li>
+      <li>
         <button (click)="logout()" class="logout-btn">
           <span class="material-symbols-outlined">logout</span>
           <span>Sair</span>
@@ -76,6 +82,16 @@
         >
           <span class="material-symbols-outlined">list_alt</span>
           <span>Listar Transações</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/dashboard/recorrencias"
+          routerLinkActive="active"
+          (click)="closeMobileMenu()"
+        >
+          <span class="material-symbols-outlined">event_repeat</span>
+          <span>Recorrências</span>
         </a>
       </li>
       <li>

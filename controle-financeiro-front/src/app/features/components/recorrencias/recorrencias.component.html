@@ -1,0 +1,116 @@
+<div class="rec-page">
+  <div class="page-header">
+    <h2>Transações recorrentes</h2>
+    <button
+      class="btn btn-outline btn-help"
+      type="button"
+      (click)="toggleAjuda()"
+      [attr.aria-expanded]="showAjuda"
+      aria-controls="ajuda-panel"
+    >
+      ? Ajuda
+    </button>
+  </div>
+
+  <div id="ajuda-panel" class="help-panel" *ngIf="showAjuda">
+    <p>
+      Como funciona: cadastre aqui receitas ou despesas que se repetem todo mês.
+      O sistema criará automaticamente a transação no dia escolhido, sem você
+      precisar lançar manualmente.
+    </p>
+    <ul>
+      <li>Escolha a <strong>categoria</strong> (Receita ou Despesa).</li>
+      <li>
+        Preencha <strong>descrição</strong>, <strong>valor</strong> e o
+        <strong>dia do mês</strong> que essa transação vai se repetir.
+      </li>
+      <li>Use o botão <strong>Salvar recorrência</strong> para ativar.</li>
+      <li>Você pode <strong>excluir</strong> quando não precisar mais.</li>
+    </ul>
+  </div>
+
+  <p *ngIf="message" class="msg">{{ message }}</p>
+
+  <div class="card">
+    <h3>Lista</h3>
+    <div class="lista" *ngIf="recorrencias.length; else vazio">
+      <div class="item" *ngFor="let r of recorrencias">
+        <div class="info">
+          <span
+            class="cat"
+            [class.receita]="r.categoriaId === 1"
+            [class.despesa]="r.categoriaId === 2"
+          >
+            {{ r.categoriaId === 1 ? "Receita" : "Despesa" }}
+          </span>
+          <div class="titulo">{{ r.descricao }}</div>
+        </div>
+        <div class="meta">
+          <div class="meta-col">
+            <div class="meta-label">Valor</div>
+            <div class="meta-value valor">
+              {{ r.valor | currency : "BRL" : "symbol" : "1.2-2" }}
+            </div>
+          </div>
+          <div class="meta-col">
+            <div class="meta-label">Repete:</div>
+            <div class="meta-value dia badge">Dia {{ r.diaDoMes }}</div>
+          </div>
+        </div>
+        <div class="acoes">
+          <button class="btn btn-danger btn-sm" (click)="excluir(r)">
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #vazio>
+      <p class="empty">Nenhuma recorrência cadastrada.</p>
+    </ng-template>
+  </div>
+
+  <div class="card">
+    <h3>Criar recorrência mensal</h3>
+    <div class="grid grid-rec-form">
+      <label class="field field-categoria">
+        <span class="label">Categoria</span>
+        <select [(ngModel)]="nova.categoriaId" name="rec_cat">
+          <option [ngValue]="1">Receita</option>
+          <option [ngValue]="2">Despesa</option>
+        </select>
+      </label>
+
+      <label class="field field-descricao">
+        <span class="label">Descrição</span>
+        <input type="text" [(ngModel)]="nova.descricao" name="rec_desc" />
+      </label>
+
+      <label class="field field-valor">
+        <span class="label">Valor</span>
+        <input
+          type="number"
+          step="0.01"
+          [(ngModel)]="nova.valor"
+          name="rec_valor"
+        />
+      </label>
+
+      <label class="field field-dia">
+        <span class="label">Dia do mês</span>
+        <input
+          type="number"
+          min="1"
+          max="31"
+          [(ngModel)]="nova.diaDoMes"
+          name="rec_dia"
+        />
+      </label>
+
+      <div class="acao field-acao">
+        <button class="btn btn-primary" (click)="salvar()">
+          Salvar recorrência
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

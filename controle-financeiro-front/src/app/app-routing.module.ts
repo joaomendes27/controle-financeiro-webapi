@@ -5,6 +5,7 @@ import { DashboardLayout } from './features/components/sidebar/sidebar';
 import { DashboardHome } from './features/components/dashboard-home/dashboard-home';
 import { AdicionarTransacao } from './features/components/adicionar-transacao/adicionar-transacao.component';
 import { ListarTransacoes } from './features/components/listar-transacoes/listar-transacoes.component';
+import { RecorrenciasComponent } from './features/components/recorrencias/recorrencias.component';
 import { AuthGuard } from './features/auth/guards/auth-guard';
 
 export const routes: Routes = [
@@ -33,6 +34,7 @@ export const routes: Routes = [
       { path: '', component: DashboardHome },
       { path: 'nova-transacao', component: AdicionarTransacao },
       { path: 'listar-transacoes', component: ListarTransacoes },
+      { path: 'recorrencias', component: RecorrenciasComponent },
     ],
   },
 
