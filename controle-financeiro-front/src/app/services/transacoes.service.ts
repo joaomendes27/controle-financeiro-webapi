@@ -49,4 +49,10 @@ export class TransacoesService {
       { headers }
     );
   }
+
+  excluirTransacao(id: number): Observable<void> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers });
+  }
 }

@@ -29,12 +29,14 @@ namespace ControleFinanceiro.Infrastructure.Repositories
             _context.Transacoes.Update(transacao);
             await _context.SaveChangesAsync();
         }
-        public async Task RemoverAsync(int id)
+      
+        public async Task<bool> RemoverDoUsuarioAsync(int id, int usuarioId)
         {
-            var transacao = await BuscarPorIdAsync(id);
-            if (transacao is not null)
-                _context.Transacoes.Remove(transacao);
+            var transacao = await _context.Transacoes.FirstOrDefaultAsync(t => t.Id == id && t.UsuarioId == usuarioId);
+            if (transacao is null) return false;
+            _context.Transacoes.Remove(transacao);
             await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<List<Transacao>> ListarDoUsuarioAsync(int usuarioId, TipoCategoriaEnum? tipo)

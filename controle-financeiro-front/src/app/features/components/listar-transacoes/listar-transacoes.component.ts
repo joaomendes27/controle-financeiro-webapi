@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { TransacoesService } from '../../../services/transacoes.service';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, NgIf, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-listar-transacoes',
+  standalone: true,
   templateUrl: './listar-transacoes.component.html',
   styleUrls: ['./listar-transacoes.component.scss'],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, NgIf, NgFor, FormsModule],
   providers: [DatePipe],
 })
 export class ListarTransacoes implements OnInit {
   receitas: any[] = [];
   despesas: any[] = [];
   errorMessage = '';
+  showConfirm = false;
+  transacaoParaExcluir: any | null = null;
 
   mostrarFiltro = false;
 
@@ -128,5 +131,38 @@ export class ListarTransacoes implements OnInit {
     this.mesSelecionado = (hoje.getMonth() + 1).toString().padStart(2, '0');
     this.anoSelecionado = hoje.getFullYear().toString();
     this.carregarTransacoes();
+  }
+
+  pedirExclusao(t: any): void {
+    this.transacaoParaExcluir = t;
+    this.showConfirm = true;
+  }
+
+  cancelarExclusao(): void {
+    this.showConfirm = false;
+    this.transacaoParaExcluir = null;
+  }
+
+  confirmarExclusao(): void {
+    if (!this.transacaoParaExcluir?.id) {
+      this.cancelarExclusao();
+      return;
+    }
+    this.transacoesService.excluirTransacao(this.transacaoParaExcluir.id).subscribe({
+      next: () => {
+        this.cancelarExclusao();
+        // Recarrega mantendo o filtro atual, se ativo
+        if (this.mostrarFiltro) {
+          this.filtrarTransacoes();
+        } else {
+          this.carregarTransacoes();
+        }
+      },
+      error: (erro) => {
+        console.error('Erro ao excluir transação', erro);
+        this.errorMessage = 'Erro ao excluir transação.';
+        this.cancelarExclusao();
+      },
+    });
   }
 }

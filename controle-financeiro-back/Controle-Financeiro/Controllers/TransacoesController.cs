@@ -88,5 +88,15 @@ namespace Controle_Financeiro.Controllers
 
             return Ok(resultado);
         }
+
+        [Authorize]
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> RemoverTransacao(int id)
+        {
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var ok = await _repository.RemoverDoUsuarioAsync(id, usuarioId);
+            if (!ok) return NotFound();
+            return Ok(new { message = "Transação excluída com sucesso.", id });
+        }
     }
 }
