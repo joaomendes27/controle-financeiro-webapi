@@ -189,7 +189,6 @@
       }
     }
 
-    // Menu lateral mobile
     .sidebar-mobile-menu {
       display: flex !important;
       flex-direction: column;
@@ -245,7 +244,7 @@
             align-items: center;
             gap: 12px;
             padding: 12px 16px;
-            border-radius: 18px; // mais arredondado
+            border-radius: 18px;
             color: #fff;
             font-size: 1rem;
             text-decoration: none;

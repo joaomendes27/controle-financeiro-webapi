@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RelatorioService } from '../../../services/relatorio.service';
 import { TransacoesService } from '../../../services/transacoes.service';
@@ -28,6 +28,16 @@ export class DashboardHome implements OnInit {
   totalDespesas = 0;
   saldo = 0;
   periodoLabel = '';
+  comparativo: {
+    totalReceitas: number;
+    totalDespesas: number;
+    saldo: number;
+  } | null = null;
+  comparativoDia = 0;
+  comparando = false;
+  receitasDelta: number | null = null;
+  despesasDelta: number | null = null;
+  saldoDelta: number | null = null;
 
   receitasChartData: ChartData<'pie', number[], string | string[]> = {
     labels: [],
@@ -52,6 +62,8 @@ export class DashboardHome implements OnInit {
 
   receitasColors: string[] = [];
   despesasColors: string[] = [];
+
+  showExportMenu = false;
 
   constructor(
     private relatorioService: RelatorioService,
@@ -100,12 +112,118 @@ export class DashboardHome implements OnInit {
     });
   }
 
+  toggleExportMenu(event: MouseEvent): void {
+    event.stopPropagation();
+    this.showExportMenu = !this.showExportMenu;
+  }
+
+  @HostListener('document:click')
+  closeExportMenu(): void {
+    this.showExportMenu = false;
+  }
+
+  exportarPdf(): void {
+    this.relatorioService.baixarPdf().subscribe({
+      next: (data: Blob) =>
+        this.baixarArquivo(data, 'relatorio-financeiro.pdf'),
+      error: (err: any) => console.error('Erro ao exportar PDF:', err),
+    });
+  }
+
+  exportarExcel(): void {
+    this.relatorioService.baixarExcel().subscribe({
+      next: (data: Blob) =>
+        this.baixarArquivo(data, 'relatorio-financeiro.xlsx'),
+      error: (err: any) => console.error('Erro ao exportar Excel:', err),
+    });
+  }
+
+  private baixarArquivo(data: Blob, filename: string): void {
+    const url = window.URL.createObjectURL(data);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
+
   private carregarTransacoesMesAtual(): void {
     const { mes, ano } = this.getMesAnoAtual();
     this.transacoesService.filtrarTransacoesPorMesAno(mes, ano).subscribe({
       next: (transacoes) => this.atualizarGraficos(transacoes || []),
       error: (err) => console.error('Erro ao carregar transações:', err),
     });
+  }
+
+  compararMesPassado(): void {
+    if (this.comparativo && !this.comparando) {
+      this.limparComparativo();
+      return;
+    }
+    if (this.comparando) return;
+    this.comparando = true;
+    const hoje = new Date();
+    const dia = hoje.getDate();
+    const mes = hoje.getMonth() + 1;
+    const ano = hoje.getFullYear();
+    this.comparativoDia = dia;
+
+    this.transacoesService.getComparativoMesAnterior(dia, mes, ano).subscribe({
+      next: (comp) => {
+        this.comparativo = comp;
+        this.recalcularDeltas();
+      },
+      error: (err) => {
+        console.error('Erro ao buscar comparativo do mês passado:', err);
+      },
+      complete: () => {
+        this.comparando = false;
+      },
+    });
+  }
+
+  limparComparativo(): void {
+    this.comparativo = null;
+    this.receitasDelta = this.despesasDelta = this.saldoDelta = null;
+    this.comparativoDia = 0;
+  }
+
+  private recalcularDeltas(): void {
+    if (!this.comparativo) {
+      this.receitasDelta = this.despesasDelta = this.saldoDelta = null;
+      return;
+    }
+    this.receitasDelta = this.deltaPercent(
+      this.totalReceitas,
+      this.comparativo.totalReceitas
+    );
+    this.despesasDelta = this.deltaPercent(
+      this.totalDespesas,
+      this.comparativo.totalDespesas
+    );
+    this.saldoDelta = this.deltaPercent(this.saldo, this.comparativo.saldo);
+  }
+
+  private deltaPercent(atual: number, anterior: number): number | null {
+    if (anterior === 0) {
+      if (atual === 0) return 0;
+      return 100;
+    }
+    return ((atual - anterior) / anterior) * 100;
+  }
+
+  classeDelta(delta: number | null): string {
+    if (delta === null) return 'delta-neutral';
+    if (delta > 0) return 'delta-up';
+    if (delta < 0) return 'delta-down';
+    return 'delta-neutral';
+  }
+
+  formatarDelta(delta: number | null): string {
+    if (delta === null) return '—';
+    const arrow = delta > 0 ? '▲' : delta < 0 ? '▼' : '';
+    const sinal = delta > 0 ? '+' : delta < 0 ? '' : '';
+    return `${arrow} ${sinal}${delta.toFixed(1)}%`.trim();
   }
 
   private atualizarGraficos(transacoes: Transacao[]): void {

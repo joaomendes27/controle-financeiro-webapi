@@ -121,6 +121,8 @@
 .item .acoes {
   display: flex;
   gap: 8px;
+  align-self: center;
+  margin-top: 6px; /* move slightly down to better vertical centering */
 }
 
 .grid {
@@ -195,6 +197,12 @@ select {
 .btn-danger:hover {
   background: #dc2626;
   border-color: #dc2626;
+}
+.item .acoes .btn-danger {
+  padding: 4px 10px;
+  min-height: 28px;
+  font-size: 0.85rem;
+  border-radius: 6px;
 }
 .btn-sm {
   padding: 6px 10px;

@@ -14,6 +14,7 @@ using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.FiltrarT
 using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ListarTransacoesDoUsuario;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Services;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Commands.Recorrencias;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ComparativoMesAnterior;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -62,6 +63,7 @@ builder.Services.AddScoped<ITransacaoRepository, TransacaoRepository>();
 builder.Services.AddScoped<IRecorrenciaTransacaoRepository, RecorrenciaTransacaoRepository>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<PdfService>();
+builder.Services.AddScoped<ExcelService>();
 builder.Services.AddScoped<TokenService>();
 
 // Serviços de aplicação
@@ -76,6 +78,9 @@ builder.Services.AddScoped<BuscarUsuarioPorEmailQueryHandler>();
 builder.Services.AddScoped<TransacaoCommandHandler>();
 builder.Services.AddScoped<FiltrarTransacoesMesAnoQueryHandler>();
 builder.Services.AddScoped<ListarTransacoesDoUsuarioQueryHandler>();
+
+// Handler comparativo
+builder.Services.AddScoped<ComparativoMesAnteriorQueryHandler>();
 
 // Handlers de recorrência
 builder.Services.AddScoped<CriarRecorrenciaCommandHandler>();

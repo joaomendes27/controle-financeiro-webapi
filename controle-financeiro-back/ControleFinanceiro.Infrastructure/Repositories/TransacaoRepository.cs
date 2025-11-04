@@ -29,7 +29,7 @@ namespace ControleFinanceiro.Infrastructure.Repositories
             _context.Transacoes.Update(transacao);
             await _context.SaveChangesAsync();
         }
-      
+
         public async Task<bool> RemoverDoUsuarioAsync(int id, int usuarioId)
         {
             var transacao = await _context.Transacoes.FirstOrDefaultAsync(t => t.Id == id && t.UsuarioId == usuarioId);
@@ -52,6 +52,16 @@ namespace ControleFinanceiro.Infrastructure.Repositories
         public async Task<List<Transacao>> FiltrarMesAnoAsync(int usuarioId, int mes, int ano)
         {
             return await _context.Transacoes.Include(t => t.Categoria).Where(t => t.UsuarioId == usuarioId && t.DataTransacao.Month == mes && t.DataTransacao.Year == ano)
+                .ToListAsync();
+        }
+
+        public async Task<List<Transacao>> ListarPorPeriodoDoUsuarioAsync(int usuarioId, DateTime inicio, DateTime fim)
+        {
+            var ini = inicio.Date;
+            var end = fim.Date;
+            return await _context.Transacoes
+                .Include(t => t.Categoria)
+                .Where(t => t.UsuarioId == usuarioId && t.DataTransacao.Date >= ini && t.DataTransacao.Date <= end)
                 .ToListAsync();
         }
     }

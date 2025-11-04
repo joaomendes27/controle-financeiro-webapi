@@ -11,5 +11,6 @@ namespace ControleFinanceiro.Domain.Interfaces
         Task<bool> RemoverDoUsuarioAsync(int id, int usuarioId);
         Task<List<Transacao>> ListarDoUsuarioAsync(int usuarioId, TipoCategoriaEnum? tipo);
         Task<List<Transacao>> FiltrarMesAnoAsync(int usuarioId, int mes, int ano);
+        Task<List<Transacao>> ListarPorPeriodoDoUsuarioAsync(int usuarioId, DateTime inicio, DateTime fim);
     }
 }

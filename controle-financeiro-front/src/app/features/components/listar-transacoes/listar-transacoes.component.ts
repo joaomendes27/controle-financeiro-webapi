@@ -148,21 +148,23 @@ export class ListarTransacoes implements OnInit {
       this.cancelarExclusao();
       return;
     }
-    this.transacoesService.excluirTransacao(this.transacaoParaExcluir.id).subscribe({
-      next: () => {
-        this.cancelarExclusao();
-        // Recarrega mantendo o filtro atual, se ativo
-        if (this.mostrarFiltro) {
-          this.filtrarTransacoes();
-        } else {
-          this.carregarTransacoes();
-        }
-      },
-      error: (erro) => {
-        console.error('Erro ao excluir transação', erro);
-        this.errorMessage = 'Erro ao excluir transação.';
-        this.cancelarExclusao();
-      },
-    });
+    this.transacoesService
+      .excluirTransacao(this.transacaoParaExcluir.id)
+      .subscribe({
+        next: () => {
+          this.cancelarExclusao();
+          // Recarrega mantendo o filtro atual, se ativo
+          if (this.mostrarFiltro) {
+            this.filtrarTransacoes();
+          } else {
+            this.carregarTransacoes();
+          }
+        },
+        error: (erro) => {
+          console.error('Erro ao excluir transação', erro);
+          this.errorMessage = 'Erro ao excluir transação.';
+          this.cancelarExclusao();
+        },
+      });
   }
 }

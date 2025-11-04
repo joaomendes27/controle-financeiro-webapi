@@ -1,9 +1,34 @@
 <div class="dashboard-home">
   <div class="header">
     <h2>Dashboard</h2>
-    <button class="btn-download" (click)="baixarRelatorio()">
-      Baixar Relatório
-    </button>
+    <div class="header-actions">
+      <button
+        class="btn-compare"
+        (click)="compararMesPassado()"
+        [disabled]="comparando"
+      >
+        {{
+          comparando
+            ? "Comparando…"
+            : comparativo
+            ? "Fechar comparação"
+            : "Comparar mês passado"
+        }}
+      </button>
+      <div class="export-menu" [class.open]="showExportMenu">
+        <button class="btn-download" (click)="toggleExportMenu($event)">
+          Exportar relatório
+        </button>
+        <div class="menu" *ngIf="showExportMenu">
+          <button class="menu-item" (click)="exportarExcel()">
+            Exportar Excel
+          </button>
+          <button class="menu-item" (click)="exportarPdf()">
+            Exportar PDF
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="content">
     <div class="stats-header">
@@ -37,6 +62,47 @@
         <div class="stat-title">Saldo Final</div>
         <div class="stat-value">
           {{ saldo | currency : "BRL" : "symbol" : "1.2-2" }}
+        </div>
+      </div>
+    </div>
+    <div class="comparativo" *ngIf="comparativo">
+      <div class="comparativo-header">
+        <div class="title">Mês passado (até dia {{ comparativoDia }})</div>
+        <button class="link-clear" type="button" (click)="limparComparativo()">
+          Limpar
+        </button>
+      </div>
+      <div class="comparativo-grid">
+        <div class="comp-card">
+          <div class="label">Receitas</div>
+          <div class="value">
+            {{
+              comparativo.totalReceitas | currency : "BRL" : "symbol" : "1.2-2"
+            }}
+          </div>
+          <div class="delta" [ngClass]="classeDelta(receitasDelta)">
+            {{ formatarDelta(receitasDelta) }}
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="label">Despesas</div>
+          <div class="value">
+            {{
+              comparativo.totalDespesas | currency : "BRL" : "symbol" : "1.2-2"
+            }}
+          </div>
+          <div class="delta" [ngClass]="classeDelta(despesasDelta)">
+            {{ formatarDelta(despesasDelta) }}
+          </div>
+        </div>
+        <div class="comp-card">
+          <div class="label">Saldo</div>
+          <div class="value">
+            {{ comparativo.saldo | currency : "BRL" : "symbol" : "1.2-2" }}
+          </div>
+          <div class="delta" [ngClass]="classeDelta(saldoDelta)">
+            {{ formatarDelta(saldoDelta) }}
+          </div>
         </div>
       </div>
     </div>

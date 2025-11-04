@@ -114,23 +114,34 @@
     </div>
   </div>
 </div>
-
-<!-- Modal de confirmação -->
-<div class="modal-backdrop" *ngIf="showConfirm" (click)="cancelarExclusao()"></div>
+<div
+  class="modal-backdrop"
+  *ngIf="showConfirm"
+  (click)="cancelarExclusao()"
+></div>
 <div class="modal" *ngIf="showConfirm" role="dialog" aria-modal="true">
   <div class="modal__content">
-    <button class="modal__close" type="button" (click)="cancelarExclusao()" aria-label="Fechar">×</button>
+    <button
+      class="modal__close"
+      type="button"
+      (click)="cancelarExclusao()"
+      aria-label="Fechar"
+    >
+      ×
+    </button>
     <h4>Confirmar exclusão</h4>
     <p>
       Tem certeza que deseja excluir a transação
-      <strong>{{ transacaoParaExcluir?.descricao }}</strong>?
+      <strong>{{ transacaoParaExcluir?.descricao }}</strong
+      >?
     </p>
     <div class="modal__actions">
-      <button type="button" class="btn-secondary" (click)="cancelarExclusao()">Cancelar</button>
+      <button type="button" class="btn-secondary" (click)="cancelarExclusao()">
+        Cancelar
+      </button>
       <button type="button" class="btn-danger" (click)="confirmarExclusao()">
         Excluir
       </button>
     </div>
   </div>
-  
 </div>

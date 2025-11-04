@@ -2,8 +2,9 @@
 using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ListarTransacoesDoUsuario;
 using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.FiltrarTransacoesMesAno;
 using ControleFinanceiro.Application.Features.TransacoesFeature.DTOs;
+using ControleFinanceiro.Application.Features.TransacoesFeature.Queries.ComparativoMesAnterior;
 using ControleFinanceiro.Application.Features.RelatorioFeature.DTOs;
-using ControleFinanceiro.Domain.Enums; 
+using ControleFinanceiro.Domain.Enums;
 using ControleFinanceiro.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -19,17 +20,20 @@ namespace Controle_Financeiro.Controllers
         private readonly ListarTransacoesDoUsuarioQueryHandler _listarQueryHandler;
         private readonly FiltrarTransacoesMesAnoQueryHandler _filtrarQueryHandler;
         private readonly ITransacaoRepository _repository;
+        private readonly ComparativoMesAnteriorQueryHandler _comparativoHandler;
 
         public TransacoesController(
             TransacaoCommandHandler commandHandler,
             ListarTransacoesDoUsuarioQueryHandler listarQueryHandler,
             FiltrarTransacoesMesAnoQueryHandler filtrarQueryHandler,
-            ITransacaoRepository repository)
+            ITransacaoRepository repository,
+            ComparativoMesAnteriorQueryHandler comparativoHandler)
         {
             _commandHandler = commandHandler;
             _listarQueryHandler = listarQueryHandler;
             _filtrarQueryHandler = filtrarQueryHandler;
             _repository = repository;
+            _comparativoHandler = comparativoHandler;
         }
 
         [Authorize]
@@ -47,7 +51,7 @@ namespace Controle_Financeiro.Controllers
             var query = new ListarTransacoesDoUsuarioQuery
             {
                 UsuarioId = usuarioId,
-                Tipo = null 
+                Tipo = null
             };
             var resultado = await _listarQueryHandler.Handle(query);
             return Ok(resultado);
@@ -87,6 +91,22 @@ namespace Controle_Financeiro.Controllers
             }).ToList();
 
             return Ok(resultado);
+        }
+
+        [Authorize]
+        [HttpPost("comparativoMesAnterior")]
+        public async Task<ActionResult<ComparativoMesAnteriorResponseDTO>> ComparativoMesAnterior([FromBody] ComparativoMesAnteriorQuery body)
+        {
+            var usuarioId = int.Parse(User.FindFirst("id")!.Value);
+            var query = new ComparativoMesAnteriorQuery
+            {
+                Dia = Math.Max(1, body.Dia),
+                Mes = Math.Max(1, body.Mes),
+                Ano = body.Ano,
+                UsuarioId = usuarioId
+            };
+            var result = await _comparativoHandler.Handle(query);
+            return Ok(result);
         }
 
         [Authorize]

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class RelatorioService {
   private apiUrl = 'https://localhost:5001/api/Transacoes';
-  private apiUrlDownload = 'https://localhost:5001/api/Relatorio/download';
+  private relatorioBaseUrl = 'https://localhost:5001/api/Relatorio';
 
   constructor(private http: HttpClient) {}
 
@@ -32,7 +32,44 @@ export class RelatorioService {
 
     const payload = { mes: mesAtual, ano: anoAtual };
 
-    return this.http.post(`${this.apiUrlDownload}`, payload, {
+    // Mantido por compatibilidade: endpoint antigo de download
+    return this.http.post(`${this.relatorioBaseUrl}/download`, payload, {
+      responseType: 'blob',
+      headers,
+    });
+  }
+
+  baixarPdf(mes?: number, ano?: number): Observable<Blob> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json');
+
+    const dataAtual = new Date();
+    const payload = {
+      mes: mes ?? dataAtual.getMonth() + 1,
+      ano: ano ?? dataAtual.getFullYear(),
+    };
+
+    return this.http.post(`${this.relatorioBaseUrl}/pdf`, payload, {
+      responseType: 'blob',
+      headers,
+    });
+  }
+
+  baixarExcel(mes?: number, ano?: number): Observable<Blob> {
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders()
+      .set('Authorization', `Bearer ${token}`)
+      .set('Content-Type', 'application/json');
+
+    const dataAtual = new Date();
+    const payload = {
+      mes: mes ?? dataAtual.getMonth() + 1,
+      ano: ano ?? dataAtual.getFullYear(),
+    };
+
+    return this.http.post(`${this.relatorioBaseUrl}/excel`, payload, {
       responseType: 'blob',
       headers,
     });
