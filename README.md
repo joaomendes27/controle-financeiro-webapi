@@ -1,6 +1,11 @@
-# Controle Financeiro WebAPI
+# Controle Financeiro WebApi
 
-Este projeto consiste em uma **Web API** em **ASP.NET Core** para controle de finanças pessoais, com um **front-end em Angular** que consome a API.
+Este projeto é uma **Web API** construída com **ASP.NET Core** e um **front-end em Angular**. A aplicação permite que o usuário gerencie suas finanças pessoais de forma intuitiva e automatizada. As principais funcionalidades incluem:
+
+- **Automação de Transações**: Permite que o usuário registre transações recorrentes automaticamente, sem precisar inserir manualmente os valores a cada mês.
+- **Gráficos Interativos**: Exibe gráficos dinâmicos para visualizar os ganhos e gastos, oferecendo uma forma clara de analisar o desempenho financeiro.
+- **Comparação Financeira**: Uma funcionalidade que compara a situação financeira atual do usuário com o mês anterior, ajudando a identificar tendências e tomar decisões mais informadas.
+
 
 ## Como Rodar o Projeto
 
