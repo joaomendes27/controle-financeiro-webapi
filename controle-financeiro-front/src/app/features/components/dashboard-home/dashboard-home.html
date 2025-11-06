@@ -122,7 +122,7 @@
           >
             <span
               class="dot"
-              [style.backgroundColor]="receitasColors[i]"
+              [style.backgroundColor]="corReceita(item.label)"
             ></span>
             <span class="label">{{ item.label }}</span>
             <span class="value">{{
@@ -146,7 +146,7 @@
           >
             <span
               class="dot"
-              [style.backgroundColor]="despesasColors[i]"
+              [style.backgroundColor]="corDespesa(item.label)"
             ></span>
             <span class="label">{{ item.label }}</span>
             <span class="value">{{

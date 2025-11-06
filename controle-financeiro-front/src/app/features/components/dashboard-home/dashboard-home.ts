@@ -63,6 +63,9 @@ export class DashboardHome implements OnInit {
   receitasColors: string[] = [];
   despesasColors: string[] = [];
 
+  private receitasColorMap = new Map<string, string>();
+  private despesasColorMap = new Map<string, string>();
+
   showExportMenu = false;
 
   constructor(
@@ -254,6 +257,22 @@ export class DashboardHome implements OnInit {
 
     this.receitasResumo = this.criarResumo(rec.labels, rec.valores);
     this.despesasResumo = this.criarResumo(des.labels, des.valores);
+
+    // Mapear cores por label para manter correspondência mesmo com ordenação diferente no resumo
+    this.receitasColorMap.clear();
+    rec.labels.forEach((label, i) =>
+      this.receitasColorMap.set(
+        this.normalizar(label),
+        this.receitasColors[i] || ''
+      )
+    );
+    this.despesasColorMap.clear();
+    des.labels.forEach((label, i) =>
+      this.despesasColorMap.set(
+        this.normalizar(label),
+        this.despesasColors[i] || ''
+      )
+    );
   }
 
   private somarPorDescricao(itens: Transacao[]): {
@@ -337,5 +356,14 @@ export class DashboardHome implements OnInit {
   private getMesAnoAtual(): { mes: number; ano: number } {
     const hoje = new Date();
     return { mes: hoje.getMonth() + 1, ano: hoje.getFullYear() };
+  }
+
+  // Cores para os itens do resumo, baseadas no label
+  corReceita(label: string): string {
+    return this.receitasColorMap.get(this.normalizar(label)) || '#9CA3AF';
+  }
+
+  corDespesa(label: string): string {
+    return this.despesasColorMap.get(this.normalizar(label)) || '#9CA3AF';
   }
 }
